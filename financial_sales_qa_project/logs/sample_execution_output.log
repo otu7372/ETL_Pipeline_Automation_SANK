@@ -1,0 +1,264 @@
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+======================================================================
+STAGE 2: SOURCE -> STAGING VALIDATION
+======================================================================
+
+-- Retail (CSV -> stg_retail_sales) --
+[FAIL] (Stage2_Source_to_Staging) Retail: row count reconciliation :: source=1200, staging=1199
+[FAIL] (Stage2_Source_to_Staging) Retail: records missing in staging :: missing_keys=['RTL000010']  evidence=C:\QA-Automation\qa_automation\reports\evidence\Retail_missing_in_staging.csv
+[PASS] (Stage2_Source_to_Staging) Retail: duplicate records in staging :: duplicate_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) Retail: phantom records in staging (not in source) :: extra_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) Retail: mandatory field nulls in staging :: mandatory_cols=['transaction_id', 'sale_date', 'branch_code', 'customer_id', 'product_code', 'gross_amount', 'transaction_status']  evidence=
+[PASS] (Stage2_Source_to_Staging) Retail: field-level accuracy (source vs staging) :: compared_cols=['sale_date', 'branch_code', 'customer_id', 'product_code', 'product_name_raw', 'product_type_raw', 'policy_number', 'folio_number', 'gross_amount', 'discount_amount', 'transaction_status']  evidence=
+
+-- Distributor (MySQL -> stg_distributor_sales) --
+[PASS] (Stage2_Source_to_Staging) Distributor: transaction_id rename verified :: Renamed for comparison; staging schema uses transaction_id
+[PASS] (Stage2_Source_to_Staging) Distributor: row count reconciliation :: source=1000, staging=1000
+[PASS] (Stage2_Source_to_Staging) Distributor: records missing in staging :: missing_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) Distributor: duplicate records in staging :: duplicate_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) Distributor: phantom records in staging (not in source) :: extra_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) Distributor: mandatory field nulls in staging :: mandatory_cols=['transaction_id', 'sale_date', 'distributor_code', 'product_code', 'gross_amount', 'transaction_status']  evidence=
+[FAIL] (Stage2_Source_to_Staging) Distributor: field-level accuracy (source vs staging) :: compared_cols=['sale_date', 'distributor_code', 'customer_id', 'product_code', 'product_name_raw', 'product_type_raw', 'policy_number', 'folio_number', 'gross_amount', 'discount_amount', 'commission_amount', 'transaction_status', 'region_code']  evidence=C:\QA-Automation\qa_automation\reports\evidence\Distributor_field_mismatches.csv
+[PASS] (Stage2_Source_to_Staging) Distributor: customer_id null rate within expected range :: customer_id is nullable by design for distributor; flag for data mart exclusion if too high
+
+-- Online (API -> stg_online_sales) --
+[FAIL] (Stage2_Source_to_Staging) Online: row count reconciliation :: source=700, staging=701
+[PASS] (Stage2_Source_to_Staging) Online: records missing in staging :: missing_keys=[]  evidence=
+[FAIL] (Stage2_Source_to_Staging) Online: duplicate records in staging :: duplicate_keys=['ONL000020']  evidence=C:\QA-Automation\qa_automation\reports\evidence\Online_duplicates_in_staging.csv
+[PASS] (Stage2_Source_to_Staging) Online: phantom records in staging (not in source) :: extra_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) Online: mandatory field nulls in staging :: mandatory_cols=['transaction_id', 'sale_date', 'customer_id', 'product_code', 'gross_amount', 'transaction_status']  evidence=
+[PASS] (Stage2_Source_to_Staging) Online: field-level accuracy (source vs staging) :: compared_cols=['sale_date', 'customer_id', 'product_code', 'product_name_raw', 'product_type_raw', 'gross_amount', 'discount_amount', 'transaction_status', 'region_code', 'payment_mode']  evidence=
+
+-- Master Data (Customer / Product / Branch-Region) --
+[PASS] (Stage2_Source_to_Staging) CustomerMaster: row count reconciliation :: source=2000, staging=2000
+[PASS] (Stage2_Source_to_Staging) CustomerMaster: records missing in staging :: missing_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) CustomerMaster: duplicate records in staging :: duplicate_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) CustomerMaster: phantom records in staging (not in source) :: extra_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) CustomerMaster: mandatory field nulls in staging :: mandatory_cols=['customer_id', 'customer_name', 'dob', 'gender', 'state', 'mobile', 'kyc_status']  evidence=
+[PASS] (Stage2_Source_to_Staging) CustomerMaster: field-level accuracy (source vs staging) :: compared_cols=['customer_name', 'dob', 'gender', 'city', 'state', 'mobile', 'email', 'kyc_status']  evidence=
+[PASS] (Stage2_Source_to_Staging) ProductMaster: row count reconciliation :: source=4, staging=4
+[PASS] (Stage2_Source_to_Staging) ProductMaster: records missing in staging :: missing_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) ProductMaster: duplicate records in staging :: duplicate_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) ProductMaster: phantom records in staging (not in source) :: extra_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) ProductMaster: mandatory field nulls in staging :: mandatory_cols=['product_code', 'standard_product_name', 'standard_product_type', 'active_flag']  evidence=
+[PASS] (Stage2_Source_to_Staging) ProductMaster: field-level accuracy (source vs staging) :: compared_cols=['standard_product_name', 'standard_product_type', 'product_category', 'issuer_company', 'active_flag']  evidence=
+[PASS] (Stage2_Source_to_Staging) BranchRegionMapping: row count reconciliation :: source=6, staging=6
+[PASS] (Stage2_Source_to_Staging) BranchRegionMapping: records missing in staging :: missing_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) BranchRegionMapping: duplicate records in staging :: duplicate_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) BranchRegionMapping: phantom records in staging (not in source) :: extra_keys=[]  evidence=
+[PASS] (Stage2_Source_to_Staging) BranchRegionMapping: mandatory field nulls in staging :: mandatory_cols=['branch_code', 'region_name', 'active_flag']  evidence=
+[PASS] (Stage2_Source_to_Staging) BranchRegionMapping: field-level accuracy (source vs staging) :: compared_cols=['branch_name', 'city', 'state', 'region_name', 'active_flag']  evidence=
+
+-- Referential Integrity (staging transactions vs staged master data) --
+[PASS] (Stage2_Source_to_Staging) Retail: customer_id exists in customer_master :: evidence=
+[PASS] (Stage2_Source_to_Staging) Retail: product_code exists in product_master :: evidence=
+[PASS] (Stage2_Source_to_Staging) Retail: branch_code exists in branch_region_mapping :: evidence=
+[PASS] (Stage2_Source_to_Staging) Distributor: customer_id exists in customer_master :: evidence=
+[PASS] (Stage2_Source_to_Staging) Distributor: product_code exists in product_master :: evidence=
+[PASS] (Stage2_Source_to_Staging) Online: customer_id exists in customer_master :: evidence=
+[PASS] (Stage2_Source_to_Staging) Online: product_code exists in product_master :: evidence=
+
+======================================================================
+SUMMARY [Stage2_Source_to_Staging]: 40/45 passed, 5 failed (3 high severity)
+======================================================================
+
+Detailed results written to: C:\QA-Automation\qa_automation\reports\Stage2_Source_to_Staging_20260824_074658.csv
+Evidence CSVs written to: C:\QA-Automation\qa_automation\reports\evidence
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+======================================================================
+STAGE 3: STAGING -> DATA MART TRANSFORMATION VALIDATION
+======================================================================
+
+-- Retail transformation --
+[FAIL] (Stage3_Staging_to_Datamart) Retail_DM: row count (staging vs data mart) :: expected=1199, actual=1200
+[PASS] (Stage3_Staging_to_Datamart) Retail_DM: records missing in data mart :: missing_keys=[]  evidence=
+[PASS] (Stage3_Staging_to_Datamart) Retail_DM: duplicate records in data mart :: duplicate_keys=[]  evidence=
+[FAIL] (Stage3_Staging_to_Datamart) Retail_DM: phantom records in data mart :: extra_keys=['RTL-RTL000010']  evidence=C:\QA-Automation\qa_automation\reports\evidence\Retail_DM_extra_in_datamart.csv
+[PASS] (Stage3_Staging_to_Datamart) Retail_DM: enrichment join completeness (no unexpected nulls) :: cols_checked=['customer_name_clean', 'region_name', 'standard_product_type']  evidence=  (nulls here mean a lookup key didn't match master data)
+[FAIL] (Stage3_Staging_to_Datamart) Retail_DM: transformation accuracy (recomputed vs actual) :: compared_cols=['customer_name_clean', 'customer_state', 'region_name', 'standard_product_name', 'standard_product_type', 'product_category', 'gross_sales_amount', 'discount_amount', 'net_sales_amount']  evidence=C:\QA-Automation\qa_automation\reports\evidence\Retail_DM_transformation_mismatches.csv
+
+-- Distributor transformation --
+[PASS] (Stage3_Staging_to_Datamart) Distributor_DM: row count (staging vs data mart) :: expected=1000, actual=1000
+[PASS] (Stage3_Staging_to_Datamart) Distributor_DM: records missing in data mart :: missing_keys=[]  evidence=
+[PASS] (Stage3_Staging_to_Datamart) Distributor_DM: duplicate records in data mart :: duplicate_keys=[]  evidence=
+[PASS] (Stage3_Staging_to_Datamart) Distributor_DM: phantom records in data mart :: extra_keys=[]  evidence=
+[PASS] (Stage3_Staging_to_Datamart) Distributor_DM: enrichment join completeness (no unexpected nulls) :: cols_checked=['region_name', 'standard_product_type']  evidence=  (nulls here mean a lookup key didn't match master data)
+[FAIL] (Stage3_Staging_to_Datamart) Distributor_DM: transformation accuracy (recomputed vs actual) :: compared_cols=['region_name', 'standard_product_name', 'standard_product_type', 'product_category', 'gross_sales_amount', 'discount_amount', 'net_sales_amount', 'commission_amount']  evidence=C:\QA-Automation\qa_automation\reports\evidence\Distributor_DM_transformation_mismatches.csv
+[PASS] (Stage3_Staging_to_Datamart) Distributor: region derivation matches ACTUAL code (not functional doc spec) :: INFORMATIONAL: functional doc specifies region should be derived via distributor_code -> region_mapping join with region_code fallback. The actual transform_datamart.sql instead maps region_code directly via a CASE statement with no join, defaulting anything else to 'Unknown'. Validated against actual code behaviour. Recommend raising as a spec-vs-implementation gap for the data engineering team.
+
+-- Online transformation --
+[FAIL] (Stage3_Staging_to_Datamart) Online_DM: row count (staging vs data mart) :: expected=701, actual=700
+[PASS] (Stage3_Staging_to_Datamart) Online_DM: records missing in data mart :: missing_keys=[]  evidence=
+[PASS] (Stage3_Staging_to_Datamart) Online_DM: duplicate records in data mart :: duplicate_keys=[]  evidence=
+[PASS] (Stage3_Staging_to_Datamart) Online_DM: phantom records in data mart :: extra_keys=[]  evidence=
+[PASS] (Stage3_Staging_to_Datamart) Online_DM: enrichment join completeness (no unexpected nulls) :: cols_checked=['customer_name_clean', 'region_name', 'standard_product_type']  evidence=  (nulls here mean a lookup key didn't match master data)
+[FAIL] (Stage3_Staging_to_Datamart) Online_DM: transformation accuracy (recomputed vs actual) :: compared_cols=['customer_name_clean', 'customer_state', 'region_name', 'standard_product_name', 'standard_product_type', 'product_category', 'gross_sales_amount', 'discount_amount', 'net_sales_amount']  evidence=C:\QA-Automation\qa_automation\reports\evidence\Online_DM_transformation_mismatches.csv
+[FAIL] (Stage3_Staging_to_Datamart) Online: folio_number derivation (MUTUAL_FUND -> ONLINE-<txn_id>) :: evidence=C:\QA-Automation\qa_automation\reports\evidence\Online_DM_folio_number_mismatches.csv
+[PASS] (Stage3_Staging_to_Datamart) Online: policy_number is hardcoded NULL for all online records :: INFORMATIONAL: functional doc implies insurance products bought online should get an issued policy_number. Actual transform_datamart.sql hardcodes policy_number=NULL for every online record regardless of product type. Not flagged as a defect here since it reflects current code behaviour consistently, but worth raising with the business/dev team.
+
+-- Compliance: inactive product/branch usage --
+[PASS] (Stage3_Staging_to_Datamart) No ACTIVE sales against inactive (discontinued) products :: evidence=
+
+======================================================================
+SUMMARY [Stage3_Staging_to_Datamart]: 15/22 passed, 7 failed (6 high severity)
+======================================================================
+
+Detailed results written to: C:\QA-Automation\qa_automation\reports\Stage3_Staging_to_Datamart_20260824_074659.csv
+Evidence CSVs written to: C:\QA-Automation\qa_automation\reports\evidence
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+======================================================================
+STAGE 4: DATA MART AGGREGATE VALIDATION
+======================================================================
+
+Loaded 1864 ACTIVE transactions from dm_sales_transaction as the recomputation base.
+
+-- Daily summary --
+[PASS] (Stage4_Datamart_Aggregates) DailySummary: no stale/missing aggregate groups :: key_cols=['sale_date']  evidence=  (a miss here usually means the summary wasn't refreshed after the fact table changed)
+[PASS] (Stage4_Datamart_Aggregates) DailySummary: no phantom aggregate groups :: evidence=
+[FAIL] (Stage4_Datamart_Aggregates) DailySummary: aggregate values match recomputed truth :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'total_insurance_premium', 'total_mutual_fund_sales', 'avg_ticket_size']  evidence=C:\QA-Automation\qa_automation\reports\evidence\DailySummary_value_mismatches.csv
+
+-- Channel summary --
+[PASS] (Stage4_Datamart_Aggregates) ChannelSummary: no stale/missing aggregate groups :: key_cols=['sale_date', 'source_channel', 'standard_product_type']  evidence=  (a miss here usually means the summary wasn't refreshed after the fact table changed)
+[PASS] (Stage4_Datamart_Aggregates) ChannelSummary: no phantom aggregate groups :: evidence=
+[FAIL] (Stage4_Datamart_Aggregates) ChannelSummary: aggregate values match recomputed truth :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence=C:\QA-Automation\qa_automation\reports\evidence\ChannelSummary_value_mismatches.csv
+
+-- Region summary --
+[PASS] (Stage4_Datamart_Aggregates) RegionSummary: no stale/missing aggregate groups :: key_cols=['sale_date', 'region_name', 'standard_product_type']  evidence=  (a miss here usually means the summary wasn't refreshed after the fact table changed)
+[PASS] (Stage4_Datamart_Aggregates) RegionSummary: no phantom aggregate groups :: evidence=
+[FAIL] (Stage4_Datamart_Aggregates) RegionSummary: aggregate values match recomputed truth :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence=C:\QA-Automation\qa_automation\reports\evidence\RegionSummary_value_mismatches.csv
+
+-- Product summary --
+[FAIL] (Stage4_Datamart_Aggregates) ProductSummary: no stale/missing aggregate groups :: key_cols=['sale_date', 'product_code', 'standard_product_name', 'standard_product_type', 'product_category']  evidence=C:\QA-Automation\qa_automation\reports\evidence\ProductSummary_stale_missing_groups.csv  (a miss here usually means the summary wasn't refreshed after the fact table changed)
+[PASS] (Stage4_Datamart_Aggregates) ProductSummary: no phantom aggregate groups :: evidence=
+[FAIL] (Stage4_Datamart_Aggregates) ProductSummary: aggregate values match recomputed truth :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence=C:\QA-Automation\qa_automation\reports\evidence\ProductSummary_value_mismatches.csv
+
+-- Executive summary (vs daily summary pass-through) --
+[PASS] (Stage4_Datamart_Aggregates) ExecutiveSummary_vs_DailySummary: no stale/missing aggregate groups :: key_cols=['sale_date']  evidence=  (a miss here usually means the summary wasn't refreshed after the fact table changed)
+[PASS] (Stage4_Datamart_Aggregates) ExecutiveSummary_vs_DailySummary: no phantom aggregate groups :: evidence=
+[PASS] (Stage4_Datamart_Aggregates) ExecutiveSummary_vs_DailySummary: aggregate values match recomputed truth :: value_cols=['total_transactions', 'total_insurance_premium', 'total_mutual_fund_sales', 'total_net_sales_amount', 'avg_ticket_size']  evidence=
+
+======================================================================
+SUMMARY [Stage4_Datamart_Aggregates]: 10/15 passed, 5 failed (5 high severity)
+======================================================================
+
+Detailed results written to: C:\QA-Automation\qa_automation\reports\Stage4_Datamart_Aggregates_20260824_074701.csv
+Evidence CSVs written to: C:\QA-Automation\qa_automation\reports\evidence
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+C:\QA-Automation\qa_automation\src\db_utils.py:40: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+  df = pd.read_sql(sql, conn, params=params)
+======================================================================
+STAGE 5: REPORTING LAYER VALIDATION
+======================================================================
+
+-- A. fs_reporting views vs fs_datamart tables --
+[PASS] (Stage5_Reporting_Layer) vw_executive_dashboard_vs_datamart: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_executive_dashboard_vs_datamart: no extra/phantom groups :: evidence=
+[FAIL] (Stage5_Reporting_Layer) vw_executive_dashboard_vs_datamart: values reconcile :: value_cols=['total_transactions', 'total_insurance_premium', 'total_mutual_fund_sales', 'total_net_sales_amount', 'avg_ticket_size']  evidence=C:\QA-Automation\qa_automation\reports\evidence\vw_executive_dashboard_vs_datamart_value_mismatches.csv
+[PASS] (Stage5_Reporting_Layer) vw_channel_performance_vs_dm_sales_channel_summary: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_channel_performance_vs_dm_sales_channel_summary: no extra/phantom groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_channel_performance_vs_dm_sales_channel_summary: values reconcile :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence=
+[PASS] (Stage5_Reporting_Layer) vw_region_performance_vs_dm_sales_region_summary: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_region_performance_vs_dm_sales_region_summary: no extra/phantom groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_region_performance_vs_dm_sales_region_summary: values reconcile :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence=
+[PASS] (Stage5_Reporting_Layer) vw_product_performance_vs_dm_sales_product_summary: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_product_performance_vs_dm_sales_product_summary: no extra/phantom groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_product_performance_vs_dm_sales_product_summary: values reconcile :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence=
+[PASS] (Stage5_Reporting_Layer) vw_daily_sales_trend_vs_dm_sales_daily_summary: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_daily_sales_trend_vs_dm_sales_daily_summary: no extra/phantom groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) vw_daily_sales_trend_vs_dm_sales_daily_summary: values reconcile :: value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'total_insurance_premium', 'total_mutual_fund_sales', 'avg_ticket_size']  evidence=
+
+-- B1. Live Executive Dashboard page --
+[PASS] (Stage5_Reporting_Layer) Executive dashboard: rendered page matches its own backing SQL :: evidence=
+[FAIL] (Stage5_Reporting_Layer) Executive dashboard: totals include ALL channels (matches true grand total) :: evidence=C:\QA-Automation\qa_automation\reports\evidence\executive_dashboard_business_totals_mismatches.csv  scraped={'total_net_sales_amount': 109665929.0, 'total_insurance_premium': 55734436.0, 'total_mutual_fund_sales': 53931493.0, 'total_transactions': 1223.0, 'avg_ticket_size': 89669.61}
+
+-- B2. Live table-based report pages --
+[PASS] (Stage5_Reporting_Layer) channel_performance_page_vs_view: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) channel_performance_page_vs_view: no extra/phantom groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) channel_performance_page_vs_view: values reconcile :: value_cols=['transaction_count', 'total_net_sales_amount']  evidence=
+[PASS] (Stage5_Reporting_Layer) region_performance_page_vs_view: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) region_performance_page_vs_view: no extra/phantom groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) region_performance_page_vs_view: values reconcile :: value_cols=['transaction_count', 'total_net_sales_amount']  evidence=
+[PASS] (Stage5_Reporting_Layer) product_performance_page_vs_view: no missing groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) product_performance_page_vs_view: no extra/phantom groups :: evidence=
+[PASS] (Stage5_Reporting_Layer) product_performance_page_vs_view: values reconcile :: value_cols=['transaction_count', 'total_net_sales_amount']  evidence=
+
+======================================================================
+SUMMARY [Stage5_Reporting_Layer]: 24/26 passed, 2 failed (2 high severity)
+======================================================================
+
+Detailed results written to: C:\QA-Automation\qa_automation\reports\Stage5_Reporting_Layer_20260824_074703.csv
+Evidence CSVs written to: C:\QA-Automation\qa_automation\reports\evidence
+
+######################################################################
+# RUNNING: Stage 2: Source -> Staging
+######################################################################
+
+######################################################################
+# RUNNING: Stage 3: Staging -> Data Mart
+######################################################################
+
+######################################################################
+# RUNNING: Stage 4: Data Mart Aggregates
+######################################################################
+
+######################################################################
+# RUNNING: Stage 5: Reporting Layer
+######################################################################
+
+======================================================================
+RUN-ALL SUMMARY
+======================================================================
+  Stage 2: Source -> Staging: COMPLETED (no failures)
+  Stage 3: Staging -> Data Mart: COMPLETED (no failures)
+  Stage 4: Data Mart Aggregates: COMPLETED (no failures)
+  Stage 5: Reporting Layer: COMPLETED (no failures)
+
+All stage CSVs are in reports/. Run src/generate_final_report.py next to build the consolidated Excel workbook.

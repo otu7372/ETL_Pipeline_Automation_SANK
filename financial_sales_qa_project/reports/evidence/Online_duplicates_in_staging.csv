@@ -1,0 +1,3 @@
+transaction_id,sale_date,customer_id,product_code,product_name_raw,product_type_raw,gross_amount,discount_amount,transaction_status,region_code,payment_mode,created_at,load_batch_id,loaded_at
+ONL000020,2026-06-01,CUST01000,MF_DEBT_001,Debt Fund,MUTUAL_FUND,168914.0,0.0,ACTIVE,EAST,UPI,2026-06-11 00:02:25,BATCH_2026_05_06,2026-06-11 00:02:25
+ONL000020,2026-06-01,CUST01000,MF_DEBT_001,Debt Fund,MUTUAL_FUND,168914.0,0.0,ACTIVE,EAST,UPI,2026-06-11 00:02:25,BATCH_2026_05_06,2026-06-11 00:02:25

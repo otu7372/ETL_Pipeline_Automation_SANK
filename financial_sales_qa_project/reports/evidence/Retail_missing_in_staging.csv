@@ -1,0 +1,2 @@
+transaction_id,sale_date,branch_code,customer_id,product_code,product_name_raw,product_type_raw,policy_number,folio_number,gross_amount,discount_amount,transaction_status,salesperson_id,payment_mode,created_at
+RTL000010,2026-05-17,BR006,CUST00917,MF_DEBT_001,Debt MF,MF,,FOL0000010,89382,0,ACTIVE,SP0010,NEFT,2026-06-11 00:02:24.403682

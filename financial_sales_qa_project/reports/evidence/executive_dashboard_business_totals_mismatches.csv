@@ -1,0 +1,6 @@
+metric,true_value_all_channels,dashboard_shows,difference
+total_transactions,1864.0,1223.0,-641.0
+total_insurance_premium,85845113.0,55734436.0,-30110677.0
+total_mutual_fund_sales,82729483.0,53931493.0,-28797990.0
+total_net_sales_amount,168574596.0,109665929.0,-58908667.0
+avg_ticket_size,90437.02,89669.61,-767.41

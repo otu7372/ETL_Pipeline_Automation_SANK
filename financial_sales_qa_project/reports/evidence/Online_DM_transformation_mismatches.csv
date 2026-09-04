@@ -1,0 +1,6 @@
+sales_transaction_id,column,source_value,target_value
+ONL-ONL000001,standard_product_type,MUTUAL_FUND,INSURANCE
+ONL-ONL000006,standard_product_type,MUTUAL_FUND,INSURANCE
+ONL-ONL000010,standard_product_type,MUTUAL_FUND,INSURANCE
+ONL-ONL000011,standard_product_type,MUTUAL_FUND,INSURANCE
+ONL-ONL000018,standard_product_type,MUTUAL_FUND,INSURANCE

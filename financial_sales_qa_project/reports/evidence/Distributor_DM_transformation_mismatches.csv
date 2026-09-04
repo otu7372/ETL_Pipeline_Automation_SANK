@@ -1,0 +1,11 @@
+sales_transaction_id,column,source_value,target_value
+DST-DST000001,net_sales_amount,32635.0,34135.0
+DST-DST000002,net_sales_amount,124279.0,124779.0
+DST-DST000004,net_sales_amount,138152.0,139652.0
+DST-DST000006,net_sales_amount,76645.0,77145.0
+DST-DST000010,net_sales_amount,156474.0,157974.0
+DST-DST000011,net_sales_amount,9966.0,10466.0
+DST-DST000012,net_sales_amount,85363.0,85863.0
+DST-DST000013,net_sales_amount,172747.0,174247.0
+DST-DST000030,gross_sales_amount,135679.0,134679.0
+DST-DST000030,net_sales_amount,134179.0,133179.0

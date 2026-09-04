@@ -1,0 +1,49 @@
+# =========================================================================
+# QA Automation Config — TF Financial Sales Data Pipeline
+# Fill in the values marked <FILL IN>. Everything else matches the
+# environment described in your project docs / .env file.
+# =========================================================================
+
+mysql:
+  host: "127.0.0.1"
+  port: 3306
+  # Use the read-only learner account for all validation queries.
+  # (tf_app is the pipeline's own read/write account — don't use it here,
+  # so we can never accidentally mutate source/staging/datamart data.)
+  user: "learner_user"
+  password: "Learner123!"   # from your .env -> MYSQL_LEARNER_PASSWORD
+
+  databases:
+    source_retail: "fs_source_retail"
+    source_distributor: "fs_source_distributor"
+    source_online: "fs_source_online"
+    staging: "fs_staging"
+    datamart: "fs_datamart"
+    reporting: "fs_reporting"
+
+api:
+  base_url: "http://127.0.0.1:5001"
+  online_sales_endpoint: "/api/online-sales"
+  health_endpoint: "/health"
+  # NOTE: the real api_app/app.py does not currently enforce an API key,
+  # but we keep this here in case that changes.
+  api_key: ""
+
+reporting_app:
+  base_url: "http://127.0.0.1:5002"
+  endpoints:
+    executive_dashboard: "/reports/executive-dashboard"
+    channel_performance: "/reports/channel-performance"
+    region_performance: "/reports/region-performance"
+    product_performance: "/reports/product-performance"
+    daily_sales_trend: "/reports/daily-sales-trend"
+
+paths:
+  # Folder containing the daily retail CSV drop (source_files/ in the env package)
+  source_files_dir: "C:\\QA-Automation\\tf-financial-sales-env\\source_files"
+  retail_csv_filename: "retail_sales_2026_05_06.csv"
+
+run:
+  # The business date window we're validating in this pass.
+  from_date: "2026-05-01"
+  to_date: "2026-06-30"

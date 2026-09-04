@@ -1,0 +1,2 @@
+sales_transaction_id,source_channel,sale_date,customer_id,customer_name_clean,customer_state,region_name,product_code,standard_product_name,standard_product_type,product_category,policy_number,folio_number,gross_sales_amount,discount_amount,net_sales_amount,commission_amount,transaction_status,load_batch_id,created_at
+RTL-RTL000010,Retail,2026-05-17,CUST00917,Customer 917,Karnataka,West,MF_DEBT_001,Stable Debt Fund,MUTUAL_FUND,Debt Fund,,FOL0000010,89382.0,0.0,89382.0,0.0,ACTIVE,BATCH_2026_05_06,2026-06-11 00:02:26

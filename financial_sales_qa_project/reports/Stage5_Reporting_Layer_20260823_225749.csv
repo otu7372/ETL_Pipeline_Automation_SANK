@@ -1,0 +1,27 @@
+timestamp,stage,check_name,severity,status,source_object,target_object,expected,actual,details
+2026-08-23T22:57:48,Stage5_Reporting_Layer,vw_executive_dashboard_vs_datamart: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:48,Stage5_Reporting_Layer,vw_executive_dashboard_vs_datamart: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:48,Stage5_Reporting_Layer,vw_executive_dashboard_vs_datamart: values reconcile,High,FAIL,,,,305 mismatches,"value_cols=['total_transactions', 'total_insurance_premium', 'total_mutual_fund_sales', 'total_net_sales_amount', 'avg_ticket_size']  evidence=C:\QA-Automation\qa_automation\reports\evidence\vw_executive_dashboard_vs_datamart_value_mismatches.csv"
+2026-08-23T22:57:48,Stage5_Reporting_Layer,vw_channel_performance_vs_dm_sales_channel_summary: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:48,Stage5_Reporting_Layer,vw_channel_performance_vs_dm_sales_channel_summary: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:48,Stage5_Reporting_Layer,vw_channel_performance_vs_dm_sales_channel_summary: values reconcile,-,PASS,,,,0 mismatches,"value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence="
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_region_performance_vs_dm_sales_region_summary: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_region_performance_vs_dm_sales_region_summary: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_region_performance_vs_dm_sales_region_summary: values reconcile,-,PASS,,,,0 mismatches,"value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence="
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_product_performance_vs_dm_sales_product_summary: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_product_performance_vs_dm_sales_product_summary: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_product_performance_vs_dm_sales_product_summary: values reconcile,-,PASS,,,,0 mismatches,"value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'avg_ticket_size']  evidence="
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_daily_sales_trend_vs_dm_sales_daily_summary: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_daily_sales_trend_vs_dm_sales_daily_summary: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,vw_daily_sales_trend_vs_dm_sales_daily_summary: values reconcile,-,PASS,,,,0 mismatches,"value_cols=['transaction_count', 'total_gross_sales_amount', 'total_net_sales_amount', 'total_insurance_premium', 'total_mutual_fund_sales', 'avg_ticket_size']  evidence="
+2026-08-23T22:57:49,Stage5_Reporting_Layer,Executive dashboard: rendered page matches its own backing SQL,-,PASS,,,page values == app's own query results,0 mismatches,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,Executive dashboard: totals include ALL channels (matches true grand total),High,FAIL,,,"dashboard total == recomputed total from dm_sales_transaction, all channels",5 metric(s) understated/overstated,"evidence=C:\QA-Automation\qa_automation\reports\evidence\executive_dashboard_business_totals_mismatches.csv  scraped={'total_net_sales_amount': 109665929.0, 'total_insurance_premium': 55734436.0, 'total_mutual_fund_sales': 53931493.0, 'total_transactions': 1223.0, 'avg_ticket_size': 89669.61}"
+2026-08-23T22:57:49,Stage5_Reporting_Layer,channel_performance_page_vs_view: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,channel_performance_page_vs_view: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,channel_performance_page_vs_view: values reconcile,-,PASS,,,,0 mismatches,"value_cols=['transaction_count', 'total_net_sales_amount']  evidence="
+2026-08-23T22:57:49,Stage5_Reporting_Layer,region_performance_page_vs_view: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,region_performance_page_vs_view: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,region_performance_page_vs_view: values reconcile,-,PASS,,,,0 mismatches,"value_cols=['transaction_count', 'total_net_sales_amount']  evidence="
+2026-08-23T22:57:49,Stage5_Reporting_Layer,product_performance_page_vs_view: no missing groups,-,PASS,,,,0 missing,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,product_performance_page_vs_view: no extra/phantom groups,-,PASS,,,,0 extra,evidence=
+2026-08-23T22:57:49,Stage5_Reporting_Layer,product_performance_page_vs_view: values reconcile,-,PASS,,,,0 mismatches,"value_cols=['transaction_count', 'total_net_sales_amount']  evidence="
