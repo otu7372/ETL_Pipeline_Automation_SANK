@@ -1,0 +1,546 @@
+2026-10-22 08:06:21,930 | INFO    | qa.run                 | === QA RUN 20261022_080621 START: 131 validations (skip_db=False) ===
+2026-10-22 08:06:21,931 | INFO    | qa.runner              | [FIL-001] START  Distributor Sales (JSON): file exists, is non-empty and readable
+2026-10-22 08:06:22,778 | INFO    | qa.context             | Loaded Distributor Sales: 50000 rows, encoding=utf-8
+2026-10-22 08:06:22,779 | INFO    | qa.runner              | [FIL-001] PASS  (0.849s) dim_Distributor_sales_50k.json: 30,060,296 bytes, encoding=utf-8, 50,000 records, 17 columns
+2026-10-22 08:06:22,783 | INFO    | qa.runner              | [FIL-002] START  Fact Sales (CSV): file exists, is non-empty and readable
+2026-10-22 08:06:23,580 | INFO    | qa.context             | Loaded Fact Sales: 50000 rows, encoding=utf-8
+2026-10-22 08:06:23,581 | INFO    | qa.runner              | [FIL-002] PASS  (0.798s) Fact_Sales_50k_CSV.csv: 10,854,084 bytes, encoding=utf-8, 50,000 records, 27 columns
+2026-10-22 08:06:23,582 | INFO    | qa.runner              | [FIL-003] START  Customer Master (TXT/CSV): file exists, is non-empty and readable
+2026-10-22 08:06:24,385 | INFO    | qa.context             | Loaded Customer Master: 50000 rows, encoding=utf-8
+2026-10-22 08:06:24,386 | INFO    | qa.runner              | [FIL-003] PASS  (0.804s) dim_Customer_Master_50k.txt: 10,767,003 bytes, encoding=utf-8, 50,000 records, 22 columns
+2026-10-22 08:06:24,387 | INFO    | qa.runner              | [FIL-004] START  Distributor Sales (JSON): column names match the expected layout
+2026-10-22 08:06:24,388 | INFO    | qa.runner              | [FIL-004] PASS  (0.001s) All 17 expected columns present
+2026-10-22 08:06:24,389 | INFO    | qa.runner              | [FIL-005] START  Fact Sales (CSV): column names match the expected layout
+2026-10-22 08:06:24,390 | INFO    | qa.runner              | [FIL-005] PASS  (0.001s) All 27 expected columns present
+2026-10-22 08:06:24,391 | INFO    | qa.runner              | [FIL-006] START  Customer Master (TXT/CSV): column names match the expected layout
+2026-10-22 08:06:24,392 | INFO    | qa.runner              | [FIL-006] PASS  (0.001s) All 22 expected columns present
+2026-10-22 08:06:24,392 | INFO    | qa.runner              | [FIL-007] START  Distributor Sales (JSON): delimiter / record structure is well-formed
+2026-10-22 08:06:24,394 | INFO    | qa.runner              | [FIL-007] PASS  (0.001s) All 50,000 records well-formed (format=json, delimiter='n/a')
+2026-10-22 08:06:24,394 | INFO    | qa.runner              | [FIL-008] START  Fact Sales (CSV): delimiter / record structure is well-formed
+2026-10-22 08:06:24,395 | INFO    | qa.runner              | [FIL-008] PASS  (0.001s) All 50,000 records well-formed (format=delimited, delimiter=',')
+2026-10-22 08:06:24,396 | INFO    | qa.runner              | [FIL-009] START  Customer Master (TXT/CSV): delimiter / record structure is well-formed
+2026-10-22 08:06:24,399 | INFO    | qa.runner              | [FIL-009] PASS  (0.004s) All 50,000 records well-formed (format=delimited, delimiter=',')
+2026-10-22 08:06:24,400 | INFO    | qa.runner              | [FIL-010] START  Distributor Sales (JSON): record count is non-zero and as expected
+2026-10-22 08:06:24,402 | INFO    | qa.runner              | [FIL-010] PASS  (0.001s) 50,000 records
+2026-10-22 08:06:24,402 | INFO    | qa.runner              | [FIL-011] START  Fact Sales (CSV): record count is non-zero and as expected
+2026-10-22 08:06:24,403 | INFO    | qa.runner              | [FIL-011] PASS  (0.001s) 50,000 records
+2026-10-22 08:06:24,404 | INFO    | qa.runner              | [FIL-012] START  Customer Master (TXT/CSV): record count is non-zero and as expected
+2026-10-22 08:06:24,405 | INFO    | qa.runner              | [FIL-012] PASS  (0.001s) 50,000 records
+2026-10-22 08:06:24,405 | INFO    | qa.runner              | [DST-001] START  Mandatory (NOT NULL) fields are populated
+2026-10-22 08:06:24,972 | INFO    | qa.runner              | [DST-001] PASS  (0.568s) All 10 mandatory columns populated in all 50,000 records
+2026-10-22 08:06:24,973 | INFO    | qa.runner              | [DST-002] START  distributor_txn_id is unique (no duplicate transactions)
+2026-10-22 08:06:25,069 | INFO    | qa.runner              | [DST-002] PASS  (0.095s) distributor_txn_id is unique across all 50,000 records
+2026-10-22 08:06:25,070 | INFO    | qa.runner              | [DST-003] START  policy_number is unique (DDL unique key)
+2026-10-22 08:06:25,164 | INFO    | qa.runner              | [DST-003] PASS  (0.094s) policy_number is unique across all 50,000 records
+2026-10-22 08:06:25,165 | INFO    | qa.runner              | [DST-004] START  distributor_txn_id follows format DSC + 14 digits
+2026-10-22 08:06:25,237 | INFO    | qa.runner              | [DST-004] PASS  (0.072s) All 50,000 records passed (no violation of: distributor_txn_id does not match required format ^DSC\d{14}$)
+2026-10-22 08:06:25,238 | INFO    | qa.runner              | [DST-005] START  Date / datetime fields are valid
+2026-10-22 08:06:27,432 | INFO    | qa.runner              | [DST-005] PASS  (2.194s) All date/time values valid in 3 column(s)
+2026-10-22 08:06:27,433 | INFO    | qa.runner              | [DST-006] START  gross_amount / commission_amount are numeric
+2026-10-22 08:06:27,434 | INFO    | qa.runner              | [DST-006] PASS  (0.001s) All decimal number values valid in 2 column(s)
+2026-10-22 08:06:27,435 | INFO    | qa.runner              | [DST-007] START  gross_amount > 0 and 0 <= commission_amount <= gross_amount
+2026-10-22 08:06:27,440 | INFO    | qa.runner              | [DST-007] PASS  (0.005s) All 50,000 records satisfy 3 rule(s)
+2026-10-22 08:06:27,440 | INFO    | qa.runner              | [DST-008] START  status is one of APPROVED / REJECTED / CANCELLED
+2026-10-22 08:06:27,497 | INFO    | qa.runner              | [DST-008] PASS  (0.057s) All 50,000 records passed (no violation of: status not in allowed values ['APPROVED', 'REJECTED', 'CANCELLED'])
+2026-10-22 08:06:27,498 | INFO    | qa.runner              | [DST-009] START  product_type_raw is a recognised product type
+2026-10-22 08:06:27,555 | INFO    | qa.runner              | [DST-009] PASS  (0.057s) All 50,000 records passed (no violation of: product_type_raw not in allowed values ['MF', 'SIP', 'Equity Fund', 'Debt Fund', 'INS', 'Insurance', 'ULIP'])
+2026-10-22 08:06:27,556 | INFO    | qa.runner              | [DST-010] START  region_code (when populated) is a valid region
+2026-10-22 08:06:27,624 | INFO    | qa.runner              | [DST-010] PASS  (0.068s) All 50,000 records passed (no violation of: region_code not in allowed values ['NORTH', 'SOUTH', 'EAST', 'WEST', 'CENTRAL'])
+2026-10-22 08:06:27,625 | INFO    | qa.runner              | [DST-011] START  updated_at >= created_at
+2026-10-22 08:06:27,629 | INFO    | qa.runner              | [DST-011] PASS  (0.003s) All 50,000 records passed (no violation of: updated_at earlier than created_at)
+2026-10-22 08:06:27,629 | INFO    | qa.runner              | [DST-012] START  customer_id (when populated) follows format CUST + digits
+2026-10-22 08:06:27,731 | INFO    | qa.runner              | [DST-012] PASS  (0.101s) All 50,000 records passed (no violation of: customer_id does not match required format ^CUST\d+$)
+2026-10-22 08:06:27,732 | INFO    | qa.runner              | [DST-013] START  customer_pan (when populated) is a valid PAN
+2026-10-22 08:06:27,835 | INFO    | qa.runner              | [DST-013] PASS  (0.103s) All 50,000 records passed (no violation of: customer_pan does not match required format ^[A-Z]{5}[0-9]{4}[A-Z]$)
+2026-10-22 08:06:27,835 | INFO    | qa.runner              | [DST-014] START  Text values fit DDL column lengths
+2026-10-22 08:06:28,182 | INFO    | qa.runner              | [DST-014] PASS  (0.346s) No value exceeds its DDL length (12 text columns)
+2026-10-22 08:06:28,183 | INFO    | qa.runner              | [DST-015] START  Optional columns are not excessively blank (distributor_name, customer_id, PAN, region)
+2026-10-22 08:06:28,931 | INFO    | qa.runner              | [DST-015] FAIL  (0.748s) distributor_name is 100.0% blank (tolerance 5%); customer_id is 3.08% blank (tolerance 1%); customer_pan is 9.93% blank (tolerance 5%); region_code is 16.63% bl
+2026-10-22 08:06:28,932 | INFO    | qa.runner              | [DST-016] START  sale_date is within a plausible window (not in future / before min date)
+2026-10-22 08:06:28,987 | INFO    | qa.runner              | [DST-016] PASS  (0.055s) All 50,000 records passed (no violation of: sale_date earlier than 2000-01-01 or in the future)
+2026-10-22 08:06:28,988 | INFO    | qa.runner              | [DST-017] START  No leading/trailing whitespace in values
+2026-10-22 08:06:30,375 | INFO    | qa.runner              | [DST-017] PASS  (1.388s) No leading/trailing whitespace found
+2026-10-22 08:06:30,376 | INFO    | qa.runner              | [DST-018] START  product_code follows format (MF|INS)_<code>
+2026-10-22 08:06:30,460 | INFO    | qa.runner              | [DST-018] PASS  (0.084s) All 50,000 records passed (no violation of: product_code does not match required format ^(MF|INS)_[A-Z0-9_]+$)
+2026-10-22 08:06:30,461 | INFO    | qa.runner              | [FAC-001] START  Mandatory (NOT NULL) fields are populated
+2026-10-22 08:06:31,294 | INFO    | qa.runner              | [FAC-001] PASS  (0.833s) All 19 mandatory columns populated in all 50,000 records
+2026-10-22 08:06:31,295 | INFO    | qa.runner              | [FAC-002] START  sales_sk (surrogate key) is unique
+2026-10-22 08:06:31,386 | INFO    | qa.runner              | [FAC-002] PASS  (0.091s) sales_sk is unique across all 50,000 records
+2026-10-22 08:06:31,387 | INFO    | qa.runner              | [FAC-003] START  distributor_txn_id is unique (no duplicate transactions)
+2026-10-22 08:06:31,446 | INFO    | qa.runner              | [FAC-003] PASS  (0.059s) distributor_txn_id is unique across all 50,000 records
+2026-10-22 08:06:31,447 | INFO    | qa.runner              | [FAC-004] START  policy_number is unique
+2026-10-22 08:06:31,537 | INFO    | qa.runner              | [FAC-004] PASS  (0.09s) policy_number is unique across all 50,000 records
+2026-10-22 08:06:31,538 | INFO    | qa.runner              | [FAC-005] START  Numeric / integer fields are valid numbers
+2026-10-22 08:06:34,756 | INFO    | qa.runner              | [FAC-005] PASS  (3.217s) All number values valid in 17 column(s)
+2026-10-22 08:06:34,756 | INFO    | qa.runner              | [FAC-006] START  Amount rules: gross>0, net/tax/discount>=0, 0<=commission<=gross, 0<=commission_pct<=15, txn_count=1
+2026-10-22 08:06:34,860 | INFO    | qa.runner              | [FAC-006] PASS  (0.104s) All 50,000 records satisfy 8 rule(s)
+2026-10-22 08:06:34,862 | INFO    | qa.runner              | [FAC-007] START  Flags (is_new_customer_flag, is_high_value_flag) are Y/N
+2026-10-22 08:06:34,869 | INFO    | qa.runner              | [FAC-007] PASS  (0.007s) All 50,000 records passed (no violation of: Flag value not in Y/N)
+2026-10-22 08:06:34,870 | INFO    | qa.runner              | [FAC-008] START  status is one of APPROVED / REJECTED / CANCELLED
+2026-10-22 08:06:34,931 | INFO    | qa.runner              | [FAC-008] PASS  (0.061s) All 50,000 records passed (no violation of: status not in allowed values ['APPROVED', 'REJECTED', 'CANCELLED'])
+2026-10-22 08:06:34,933 | INFO    | qa.runner              | [FAC-009] START  Datetime fields valid and src_updated_at >= src_created_at
+2026-10-22 08:06:34,965 | INFO    | qa.runner              | [FAC-009] PASS  (0.033s) All 50,000 records satisfy 2 rule(s)
+2026-10-22 08:06:34,967 | INFO    | qa.runner              | [FAC-010] START  sale_date_key is a valid yyyymmdd date
+2026-10-22 08:06:35,099 | INFO    | qa.runner              | [FAC-010] PASS  (0.133s) All 50,000 records passed (no violation of: sale_date_key is not a valid yyyymmdd date)
+2026-10-22 08:06:35,100 | INFO    | qa.runner              | [FAC-011] START  Text values fit DDL column lengths
+2026-10-22 08:06:35,236 | INFO    | qa.runner              | [FAC-011] PASS  (0.136s) No value exceeds its DDL length (7 text columns)
+2026-10-22 08:06:35,237 | INFO    | qa.runner              | [FAC-012] START  customer_key is populated (blank-rate within tolerance)
+2026-10-22 08:06:35,360 | INFO    | qa.runner              | [FAC-012] FAIL  (0.123s) customer_key is 3.08% blank (tolerance 1%)
+2026-10-22 08:06:35,361 | INFO    | qa.runner              | [CUS-001] START  Mandatory (NOT NULL) customer fields are populated
+2026-10-22 08:06:36,419 | INFO    | qa.runner              | [CUS-001] PASS  (1.058s) All 21 mandatory columns populated in all 50,000 records
+2026-10-22 08:06:36,420 | INFO    | qa.runner              | [CUS-002] START  customer_key (primary key) is unique
+2026-10-22 08:06:36,510 | INFO    | qa.runner              | [CUS-002] PASS  (0.09s) customer_key is unique across all 50,000 records
+2026-10-22 08:06:36,510 | INFO    | qa.runner              | [CUS-003] START  policy_number is unique (DDL unique key)
+2026-10-22 08:06:36,600 | INFO    | qa.runner              | [CUS-003] PASS  (0.089s) policy_number is unique across all 50,000 records
+2026-10-22 08:06:36,601 | INFO    | qa.runner              | [CUS-004] START  customer_id is unique (no duplicate customer records)
+2026-10-22 08:06:36,748 | INFO    | qa.runner              | [CUS-004] FAIL  (0.148s) 1,254 duplicated customer_id values affecting 2,525 of 50,000 records
+2026-10-22 08:06:36,749 | INFO    | qa.runner              | [CUS-005] START  Records sharing a customer_id do not carry conflicting identity attributes (PAN / DOB)
+2026-10-22 08:06:36,908 | INFO    | qa.runner              | [CUS-005] FAIL  (0.158s) 1,254 customer_id values shared by records with conflicting PAN/DOB
+2026-10-22 08:06:36,909 | INFO    | qa.runner              | [CUS-006] START  customer_id follows format CUC + digits
+2026-10-22 08:06:37,001 | INFO    | qa.runner              | [CUS-006] PASS  (0.091s) All 50,000 records passed (no violation of: customer_id does not match required format ^CUC\d+$)
+2026-10-22 08:06:37,002 | INFO    | qa.runner              | [CUS-007] START  gender, kyc_status, customer_segment, active_flag hold valid values
+2026-10-22 08:06:37,023 | INFO    | qa.runner              | [CUS-007] PASS  (0.022s) All 50,000 records satisfy 4 rule(s)
+2026-10-22 08:06:37,024 | INFO    | qa.runner              | [CUS-008] START  email, mobile, pincode and PAN have valid formats
+2026-10-22 08:06:37,505 | INFO    | qa.runner              | [CUS-008] PASS  (0.482s) All 50,000 records satisfy 4 rule(s)
+2026-10-22 08:06:37,506 | INFO    | qa.runner              | [CUS-009] START  Numeric and date fields are valid
+2026-10-22 08:06:39,532 | INFO    | qa.runner              | [CUS-009] PASS  (2.025s) All number/date values valid in 6 column(s)
+2026-10-22 08:06:39,533 | INFO    | qa.runner              | [CUS-010] START  annual_income >= 0; DOB not in future; customer was an adult at onboarding
+2026-10-22 08:06:39,546 | INFO    | qa.runner              | [CUS-010] PASS  (0.013s) All 50,000 records satisfy 4 rule(s)
+2026-10-22 08:06:39,547 | INFO    | qa.runner              | [CUS-011] START  updated_at >= created_at
+2026-10-22 08:06:39,550 | INFO    | qa.runner              | [CUS-011] PASS  (0.003s) All 50,000 records passed (no violation of: updated_at earlier than created_at)
+2026-10-22 08:06:39,551 | INFO    | qa.runner              | [CUS-012] START  Text values fit DDL column lengths
+2026-10-22 08:06:39,895 | INFO    | qa.runner              | [CUS-012] PASS  (0.344s) No value exceeds its DDL length (16 text columns)
+2026-10-22 08:06:39,896 | INFO    | qa.runner              | [CUS-013] START  No leading/trailing whitespace in values
+2026-10-22 08:06:41,380 | INFO    | qa.runner              | [CUS-013] PASS  (1.484s) No leading/trailing whitespace found
+2026-10-22 08:06:41,381 | INFO    | qa.runner              | [REF-001] START  Every distributor customer_id exists in Customer Master (customer_id)
+2026-10-22 08:06:41,652 | INFO    | qa.runner              | [REF-001] FAIL  (0.271s) 48,461 of 48,461 sales (100.0%) reference a customer_id absent from Customer Master; 44,753 distinct ids. Sample id 'CUST313217' vs master format 'CUC1879727'
+2026-10-22 08:06:41,659 | INFO    | qa.runner              | [REF-002] START  Every Fact_Sales customer_key exists in Customer Master (customer_key)
+2026-10-22 08:06:41,985 | INFO    | qa.runner              | [REF-002] FAIL  (0.326s) 48,461 of 48,461 fact rows reference a customer_key absent from Customer Master (fact keys 100,004-400,000; master keys 1-50,000)
+2026-10-22 08:06:41,990 | INFO    | qa.runner              | [REF-003] START  customer_id (distributor) <-> customer_key (fact) mapping is one-to-one
+2026-10-22 08:06:42,424 | INFO    | qa.runner              | [REF-003] PASS  (0.434s) 44,753 customer_id values map 1:1 to customer_key
+2026-10-22 08:06:42,425 | INFO    | qa.runner              | [REF-004] START  Blank customer_id in source <=> blank customer_key in Fact_Sales
+2026-10-22 08:06:42,559 | INFO    | qa.runner              | [REF-004] PASS  (0.134s) All 50,000 records passed (no violation of: customer reference populated in only one of source / fact)
+2026-10-22 08:06:42,560 | INFO    | qa.runner              | [REF-005] START  customer_pan agrees between Distributor Sales and Customer Master (linked by policy_number) [inferred link]
+2026-10-22 08:06:42,771 | INFO    | qa.runner              | [REF-005] FAIL  (0.212s) 45,035 of 45,035 records failed: PAN differs between source and Customer Master
+2026-10-22 08:06:42,777 | INFO    | qa.runner              | [REF-006] START  Sales do not reference inactive (active_flag=N) or KYC-REJECTED customers
+2026-10-22 08:06:42,986 | INFO    | qa.runner              | [REF-006] SKIPPED  (0.208s) BLOCKED: no sale resolves to a Customer Master record, so customer status cannot be evaluated (see REF-001)
+2026-10-22 08:06:42,987 | INFO    | qa.runner              | [REF-007] START  Every Customer Master policy_number exists in Distributor Sales (no orphan customers)
+2026-10-22 08:06:43,083 | INFO    | qa.runner              | [REF-007] PASS  (0.096s) All 50,000 records passed (no violation of: Customer policy_number has no sales record)
+2026-10-22 08:06:43,084 | INFO    | qa.runner              | [DB-001] START  Database connection can be established
+2026-10-22 08:06:43,235 | INFO    | qa.database            | Connecting to MySQL 127.0.0.1:3306/python_project2 as python_p2_learner
+2026-10-22 08:06:43,279 | INFO    | qa.runner              | [DB-001] PASS  (0.195s) Connected to MySQL 8.0.46 at 127.0.0.1:3306 db=python_project2 user=python_p2_learner
+2026-10-22 08:06:43,280 | INFO    | qa.runner              | [DB-002] START  Required source tables and the data mart exist
+2026-10-22 08:06:43,292 | INFO    | qa.runner              | [DB-002] PASS  (0.012s) All 4 tables exist: dim_Distributor_sales, Fact_Sales, dim_Customer_Master, dm_Distributor_Sales_Customer_360
+2026-10-22 08:06:43,294 | INFO    | qa.runner              | [DB-003] START  Table columns and data types match the DDL-derived schema
+2026-10-22 08:06:43,315 | INFO    | qa.runner              | [DB-003] PASS  (0.02s) All 123 columns across 4 tables match schema
+2026-10-22 08:06:43,316 | INFO    | qa.runner              | [DB-004] START  All tables contain data (record counts reported)
+2026-10-22 08:06:43,383 | INFO    | qa.runner              | [DB-004] PASS  (0.067s) dim_Distributor_sales=50,000, Fact_Sales=50,000, dim_Customer_Master=50,000, dm_Distributor_Sales_Customer_360=45,076
+2026-10-22 08:06:43,384 | INFO    | qa.runner              | [DBQ-001] START  SQL: no duplicate distributor_txn_id in data mart
+2026-10-22 08:06:43,469 | INFO    | qa.runner              | [DBQ-001] PASS  (0.085s) Query 'dm_dup_txn' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:43,470 | INFO    | qa.runner              | [DBQ-002] START  SQL: no duplicate policy_number in data mart
+2026-10-22 08:06:43,520 | INFO    | qa.runner              | [DBQ-002] PASS  (0.05s) Query 'dm_dup_policy' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:43,521 | INFO    | qa.runner              | [DBQ-003] START  SQL: no duplicate sales_sk in data mart
+2026-10-22 08:06:43,559 | INFO    | qa.runner              | [DBQ-003] PASS  (0.038s) Query 'dm_dup_sales_sk' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:43,560 | INFO    | qa.runner              | [DBQ-004] START  SQL: no duplicate distributor_txn_id in dim_Distributor_sales
+2026-10-22 08:06:43,636 | INFO    | qa.runner              | [DBQ-004] PASS  (0.077s) Query 'dist_dup_txn' returned 0 offending rows (of 50,000 dim_Distributor_sales rows)
+2026-10-22 08:06:43,638 | INFO    | qa.runner              | [DBQ-005] START  SQL: no duplicate distributor_txn_id in Fact_Sales
+2026-10-22 08:06:43,694 | INFO    | qa.runner              | [DBQ-005] PASS  (0.056s) Query 'fact_dup_txn' returned 0 offending rows (of 50,000 Fact_Sales rows)
+2026-10-22 08:06:43,695 | INFO    | qa.runner              | [DBQ-006] START  SQL: no duplicate customer_id in dim_Customer_Master
+2026-10-22 08:06:44,049 | INFO    | qa.runner              | [DBQ-006] FAIL  (0.354s) Query 'cust_dup_customer_id' returned 1,254 offending row(s) of 50,000
+2026-10-22 08:06:44,050 | INFO    | qa.runner              | [DBQ-007] START  SQL: every data-mart sales_sk exists in Fact_Sales
+2026-10-22 08:06:44,158 | INFO    | qa.runner              | [DBQ-007] PASS  (0.108s) Query 'dm_orphan_fact' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:44,160 | INFO    | qa.runner              | [DBQ-008] START  SQL: every data-mart txn+policy exists in dim_Distributor_sales
+2026-10-22 08:06:44,364 | INFO    | qa.runner              | [DBQ-008] PASS  (0.206s) Query 'dm_orphan_dist' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:44,365 | INFO    | qa.runner              | [DBQ-009] START  SQL: every data-mart customer_key exists in dim_Customer_Master
+2026-10-22 08:06:44,402 | INFO    | qa.runner              | [DBQ-009] PASS  (0.036s) Query 'dm_orphan_customer' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:44,403 | INFO    | qa.runner              | [DBQ-010] START  SQL: data mart holds only APPROVED transactions
+2026-10-22 08:06:44,467 | INFO    | qa.runner              | [DBQ-010] PASS  (0.064s) Query 'dm_non_approved' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:44,469 | INFO    | qa.runner              | [DBQ-011] START  SQL: every APPROVED source transaction is present in the data mart (no missing records)
+2026-10-22 08:06:44,813 | INFO    | qa.runner              | [DBQ-011] PASS  (0.344s) Query 'approved_missing_in_dm' returned 0 offending rows (of 50,000 Fact_Sales rows)
+2026-10-22 08:06:44,813 | INFO    | qa.runner              | [DBQ-012] START  SQL: no unexpected (extra) records in the data mart
+2026-10-22 08:06:45,111 | INFO    | qa.runner              | [DBQ-012] PASS  (0.297s) Query 'dm_extra_vs_source' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:45,112 | INFO    | qa.runner              | [DBQ-013] START  SQL: data-mart rows with a customer_id are enriched from Customer Master
+2026-10-22 08:06:45,309 | INFO    | qa.runner              | [DBQ-013] FAIL  (0.197s) Query 'dm_customer_not_enriched' returned 43,685 offending row(s) of 45,076
+2026-10-22 08:06:45,311 | INFO    | qa.runner              | [DBQ-014] START  SQL: data-mart measures equal Fact_Sales measures
+2026-10-22 08:06:45,558 | INFO    | qa.runner              | [DBQ-014] PASS  (0.247s) Query 'dm_vs_fact_measures' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:45,559 | INFO    | qa.runner              | [DBQ-015] START  SQL: data-mart distributor attributes equal dim_Distributor_sales
+2026-10-22 08:06:45,838 | INFO    | qa.runner              | [DBQ-015] PASS  (0.279s) Query 'dm_vs_dist_attributes' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:45,839 | INFO    | qa.runner              | [DBQ-016] START  SQL: Fact_Sales core fields equal dim_Distributor_sales
+2026-10-22 08:06:46,215 | INFO    | qa.runner              | [DBQ-016] PASS  (0.376s) Query 'fact_vs_dist_core' returned 0 offending rows (of 50,000 Fact_Sales rows)
+2026-10-22 08:06:46,216 | INFO    | qa.runner              | [DBQ-017] START  SQL: data-mart load timestamp is not in the future
+2026-10-22 08:06:46,292 | INFO    | qa.runner              | [DBQ-017] PASS  (0.076s) Query 'dm_future_load_ts' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 08:06:46,294 | INFO    | qa.runner              | [REC-001] START  dim_Distributor_sales: file record count equals table row count
+2026-10-22 08:06:48,188 | INFO    | qa.context             | Read table dim_Distributor_sales: 50000 rows
+2026-10-22 08:06:48,189 | INFO    | qa.runner              | [REC-001] PASS  (1.895s) File=50,000 Table=50,000
+2026-10-22 08:06:48,191 | INFO    | qa.runner              | [REC-002] START  Fact_Sales: file record count equals table row count
+2026-10-22 08:06:51,223 | INFO    | qa.context             | Read table Fact_Sales: 50000 rows
+2026-10-22 08:06:51,224 | INFO    | qa.runner              | [REC-002] PASS  (3.032s) File=50,000 Table=50,000
+2026-10-22 08:06:51,225 | INFO    | qa.runner              | [REC-003] START  dim_Customer_Master: file record count equals table row count
+2026-10-22 08:06:53,102 | INFO    | qa.context             | Read table dim_Customer_Master: 50000 rows
+2026-10-22 08:06:53,103 | INFO    | qa.runner              | [REC-003] PASS  (1.878s) File=50,000 Table=50,000
+2026-10-22 08:06:53,104 | INFO    | qa.runner              | [REC-004] START  dim_Distributor_sales: no file records missing from, or extra in, the table (key distributor_txn_id)
+2026-10-22 08:06:54,058 | INFO    | qa.runner              | [REC-004] PASS  (0.953s) All 50,000 keys present in both
+2026-10-22 08:06:54,058 | INFO    | qa.runner              | [REC-005] START  Fact_Sales: no file records missing from, or extra in, the table (key sales_sk)
+2026-10-22 08:06:55,301 | INFO    | qa.runner              | [REC-005] PASS  (1.243s) All 50,000 keys present in both
+2026-10-22 08:06:55,302 | INFO    | qa.runner              | [REC-006] START  dim_Customer_Master: no file records missing from, or extra in, the table (key customer_key)
+2026-10-22 08:06:56,358 | INFO    | qa.runner              | [REC-006] PASS  (1.056s) All 50,000 keys present in both
+2026-10-22 08:06:56,359 | INFO    | qa.runner              | [REC-007] START  dim_Distributor_sales: every column of every record matches between file and table
+2026-10-22 08:06:56,885 | INFO    | qa.runner              | [REC-007] PASS  (0.526s) 50,000 records x 16 columns compared - all match
+2026-10-22 08:06:56,886 | INFO    | qa.runner              | [REC-008] START  Fact_Sales: every column of every record matches between file and table
+2026-10-22 08:06:57,100 | INFO    | qa.runner              | [REC-008] PASS  (0.214s) 50,000 records x 26 columns compared - all match
+2026-10-22 08:06:57,101 | INFO    | qa.runner              | [REC-009] START  dim_Customer_Master: every column of every record matches between file and table
+2026-10-22 08:06:57,650 | INFO    | qa.runner              | [REC-009] PASS  (0.549s) 50,000 records x 21 columns compared - all match
+2026-10-22 08:06:57,651 | INFO    | qa.runner              | [REC-010] START  Every distributor transaction has a Fact_Sales record and vice-versa
+2026-10-22 08:06:57,722 | INFO    | qa.runner              | [REC-010] PASS  (0.071s) All 50,000 transactions exist in both sources
+2026-10-22 08:06:57,723 | INFO    | qa.runner              | [REC-011] START  Policy, gross, commission, status, timestamps and sale date agree between Distributor Sales and Fact_Sales
+2026-10-22 08:06:58,384 | INFO    | qa.runner              | [REC-011] PASS  (0.661s) 50,000 records x 7 columns compared - all match
+2026-10-22 08:06:58,385 | INFO    | qa.runner              | [REC-020] START  Data-mart row count equals expected (APPROVED fact rows joined to distributor on txn+policy)
+2026-10-22 08:07:02,017 | INFO    | qa.context             | Read table dm_Distributor_Sales_Customer_360: 45076 rows
+2026-10-22 08:07:02,534 | INFO    | qa.runner              | [REC-020] PASS  (4.148s) Expected=45,076 Actual=45,076 (fact=50,000 -> APPROVED=45,076 -> after distributor join & customer left-join=45,076)
+2026-10-22 08:07:02,534 | INFO    | qa.runner              | [REC-021] START  No expected transactions are missing from the data mart
+2026-10-22 08:07:04,929 | INFO    | qa.runner              | [REC-021] PASS  (2.394s) All 45,076 expected transactions are present
+2026-10-22 08:07:04,930 | INFO    | qa.runner              | [REC-022] START  No unexpected (extra) records exist in the data mart (e.g. REJECTED/CANCELLED)
+2026-10-22 08:07:05,329 | INFO    | qa.runner              | [REC-022] PASS  (0.399s) No unexpected records among 45,076 data-mart rows
+2026-10-22 08:07:05,330 | INFO    | qa.runner              | [REC-023] START  Fact-derived keys, measures, flags and audit dates match the source
+2026-10-22 08:07:05,896 | INFO    | qa.runner              | [REC-023] PASS  (0.565s) 45,076 records x 21 columns compared - all match
+2026-10-22 08:07:05,896 | INFO    | qa.runner              | [REC-024] START  Distributor attributes and derived product family/category/flags match the transformation rules
+2026-10-22 08:07:06,664 | INFO    | qa.runner              | [REC-024] PASS  (0.767s) 45,076 records x 13 columns compared - all match
+2026-10-22 08:07:06,665 | INFO    | qa.runner              | [REC-025] START  Customer attributes in the data mart match the Customer Master join result
+2026-10-22 08:07:07,242 | INFO    | qa.runner              | [REC-025] PASS  (0.577s) 45,076 records x 19 columns compared - all match
+2026-10-22 08:07:07,243 | INFO    | qa.runner              | [REC-026] START  Aggregates (count, gross, net, commission, tax, discount) agree overall and by product category / distributor
+2026-10-22 08:07:07,779 | INFO    | qa.runner              | [REC-026] PASS  (0.536s) 144 aggregate figures agree (overall, by product_category, distributor_code, region_key)
+2026-10-22 08:07:07,780 | INFO    | qa.runner              | [BR-001] START  sale_date equals the calendar date of created_at [inferred rule]
+2026-10-22 08:07:07,791 | INFO    | qa.runner              | [BR-001] PASS  (0.011s) All 50,000 records passed (no violation of: sale_date differs from date of created_at (temporal drift))
+2026-10-22 08:07:07,792 | INFO    | qa.runner              | [BR-002] START  Fact sale_date_key equals Distributor sale_date (no date drift between systems)
+2026-10-22 08:07:08,319 | INFO    | qa.runner              | [BR-002] PASS  (0.527s) All 50,000 records passed (no violation of: sale_date_key does not match sale_date)
+2026-10-22 08:07:08,320 | INFO    | qa.runner              | [CAL-001] START  net_amount = gross_amount - commission_amount [inferred rule]
+2026-10-22 08:07:08,328 | INFO    | qa.runner              | [CAL-001] PASS  (0.008s) All 50,000 records passed (no violation of: net_amount <> gross_amount - commission_amount)
+2026-10-22 08:07:08,328 | INFO    | qa.runner              | [CAL-002] START  commission_pct = commission_amount / gross_amount x 100 (3 d.p.)
+2026-10-22 08:07:08,335 | INFO    | qa.runner              | [CAL-002] PASS  (0.005s) All 50,000 records passed (no violation of: commission_pct inconsistent with commission_amount / gross_amount)
+2026-10-22 08:07:08,335 | INFO    | qa.runner              | [CAL-003] START  Mutual-fund rows: units_allocated x nav_at_purchase ~= gross_amount [inferred rule]
+2026-10-22 08:07:08,341 | INFO    | qa.runner              | [CAL-003] PASS  (0.006s) All 28,673 records passed (no violation of: units x NAV differs from gross_amount beyond tolerance)
+2026-10-22 08:07:08,342 | INFO    | qa.runner              | [CAL-004] START  Insurance rows: premium_amount <= gross_amount and sum_assured > premium_amount
+2026-10-22 08:07:08,357 | INFO    | qa.runner              | [CAL-004] PASS  (0.015s) All 21,327 records satisfy 2 rule(s)
+2026-10-22 08:07:08,358 | INFO    | qa.runner              | [CAL-005] START  Decimal precision does not exceed DDL scale (no silent rounding on load)
+2026-10-22 08:07:09,401 | INFO    | qa.runner              | [CAL-005] PASS  (1.043s) All decimal values fit their DDL scale
+2026-10-22 08:07:09,402 | INFO    | qa.runner              | [CAL-006] START  is_high_value_flag = 'Y' exactly when gross_amount >= threshold [inferred rule]
+2026-10-22 08:07:09,428 | INFO    | qa.runner              | [CAL-006] PASS  (0.027s) All 50,000 records passed (no violation of: is_high_value_flag inconsistent with gross_amount >= 100,000)
+2026-10-22 08:07:09,429 | INFO    | qa.runner              | [CAL-007] START  Data mart: net_amount = gross_amount - commission_amount
+2026-10-22 08:07:09,440 | INFO    | qa.runner              | [CAL-007] PASS  (0.011s) All 45,076 records passed (no violation of: net_amount <> gross_amount - commission_amount)
+2026-10-22 08:07:09,443 | INFO    | qa.runner              | [CAL-008] START  Data mart: commission_pct consistent with commission_amount / gross_amount
+2026-10-22 08:07:09,449 | INFO    | qa.runner              | [CAL-008] PASS  (0.006s) All 45,076 records passed (no violation of: commission_pct inconsistent)
+2026-10-22 08:07:09,450 | INFO    | qa.runner              | [MAP-001] START  region_key <-> region_code is one-to-one
+2026-10-22 08:07:09,644 | INFO    | qa.runner              | [MAP-001] PASS  (0.195s) 5 region_key values map 1:1 to region_code
+2026-10-22 08:07:09,646 | INFO    | qa.runner              | [MAP-002] START  region_code is populated for every record that has a region_key (key resolves to a code)
+2026-10-22 08:07:09,843 | INFO    | qa.runner              | [MAP-002] FAIL  (0.197s) 8,315 of 50,000 records failed: region_key present but region_code blank in Distributor Sales; blanks occur only for region_key in ['1']
+2026-10-22 08:07:09,845 | INFO    | qa.runner              | [MAP-003] START  distributor_key <-> distributor_code is one-to-one
+2026-10-22 08:07:09,958 | INFO    | qa.runner              | [MAP-003] PASS  (0.114s) 16 distributor_key values map 1:1 to distributor_code
+2026-10-22 08:07:09,959 | INFO    | qa.runner              | [PRD-001] START  product_code prefix identifies a known family (unknown prefixes would silently default to MF in the data mart)
+2026-10-22 08:07:10,009 | INFO    | qa.runner              | [PRD-001] PASS  (0.049s) All 50,000 records passed (no violation of: product_code prefix is neither MF nor INS)
+2026-10-22 08:07:10,010 | INFO    | qa.runner              | [PRD-002] START  Product / product-family combination valid: product_type_raw belongs to the family given by product_code
+2026-10-22 08:07:10,110 | INFO    | qa.runner              | [PRD-002] PASS  (0.1s) All 50,000 records passed (no violation of: product_type_raw is inconsistent with product family)
+2026-10-22 08:07:10,111 | INFO    | qa.runner              | [PRD-003] START  Family-specific fields: MF has units/NAV/folio and no premium/sum assured; INS the reverse [inferred rule]
+2026-10-22 08:07:10,642 | INFO    | qa.runner              | [PRD-003] PASS  (0.53s) All 50,000 records satisfy 10 rule(s)
+2026-10-22 08:07:10,643 | INFO    | qa.runner              | [PRD-004] START  product_key <-> product_code is one-to-one
+2026-10-22 08:07:10,756 | INFO    | qa.runner              | [PRD-004] PASS  (0.113s) 14 product_key values map 1:1 to product_code
+2026-10-22 08:07:10,757 | INFO    | qa.runner              | [PRD-005] START  Each product_code carries exactly one product_name_raw and one product_type_raw
+2026-10-22 08:07:10,810 | INFO    | qa.runner              | [PRD-005] PASS  (0.054s) 14 product codes each map to one name and one type
+2026-10-22 08:07:10,811 | INFO    | qa.runner              | [DM-001] START  Mandatory (NOT NULL) data-mart columns are populated
+2026-10-22 08:07:11,508 | INFO    | qa.runner              | [DM-001] PASS  (0.696s) All 28 mandatory columns populated in all 45,076 records
+2026-10-22 08:07:11,509 | INFO    | qa.runner              | [DM-002] START  Domains: status, product_family, product_category, flags, gender, kyc_status, segment hold valid values
+2026-10-22 08:07:11,603 | INFO    | qa.runner              | [DM-002] PASS  (0.094s) All 45,076 records satisfy 11 rule(s)
+2026-10-22 08:07:11,604 | INFO    | qa.runner              | [DM-003] START  product_family / product_category are consistent with product_code and product_type_raw (family rules)
+2026-10-22 08:07:11,758 | INFO    | qa.runner              | [DM-003] PASS  (0.153s) All 45,076 records satisfy 3 rule(s)
+2026-10-22 08:07:11,759 | INFO    | qa.runner              | [DM-004] START  Value rules: gross>0, net>=0, 0<=commission<=gross, 0<=commission_pct<=15, txn_count=1, tax/discount>=0
+2026-10-22 08:07:11,769 | INFO    | qa.runner              | [DM-004] PASS  (0.011s) All 45,076 records satisfy 7 rule(s)
+2026-10-22 08:07:11,772 | INFO    | qa.runner              | [DM-005] START  Customer attributes are populated whenever customer_key is populated (no partial enrichment)
+2026-10-22 08:07:11,793 | INFO    | qa.runner              | [DM-005] SKIPPED  (0.021s) BLOCKED: no data-mart row is linked to a customer, so enrichment completeness cannot be evaluated (see DM-007)
+2026-10-22 08:07:11,795 | INFO    | qa.runner              | [DM-006] START  customer_age is plausible and equals full years between date_of_birth and sale_date
+2026-10-22 08:07:11,798 | INFO    | qa.runner              | [DM-006] SKIPPED  (0.004s) BLOCKED: no data-mart row has date_of_birth, so customer_age cannot be evaluated (see DM-007)
+2026-10-22 08:07:11,799 | INFO    | qa.runner              | [DM-007] START  Customer-360 enrichment: sales with a customer_id are linked to the Customer Master (customer_key/attributes populated)
+2026-10-22 08:07:11,896 | INFO    | qa.runner              | [DM-007] FAIL  (0.097s) 43,685 of 43,685 data-mart rows (100.0% of rows that carry a customer_id) have NO customer attributes. Join key dim_Distributor_sales.customer_id (CUST...) neve
+2026-10-22 08:07:11,899 | INFO    | qa.runner              | [DM-008] START  Audit/lineage columns populated and well-formed (fact_etl_run_id, dm_etl_run_id pattern, load timestamp)
+2026-10-22 08:07:11,973 | INFO    | qa.runner              | [DM-008] PASS  (0.073s) All 45,076 records satisfy 3 rule(s)
+2026-10-22 08:07:11,974 | INFO    | qa.runner              | [DM-009] START  dm_sk is a contiguous sequence 1..N ordered by sales_sk
+2026-10-22 08:07:11,983 | INFO    | qa.runner              | [DM-009] PASS  (0.009s) All 45,076 records passed (no violation of: dm_sk not sequential by sales_sk)
+2026-10-22 08:07:11,984 | INFO    | qa.runner              | [DM-010] START  Flags are consistent with their sources: is_ins/is_mf vs product_family, is_kyc_verified vs kyc_status, is_high_value vs gross
+2026-10-22 08:07:12,036 | INFO    | qa.runner              | [DM-010] PASS  (0.052s) All 45,076 records satisfy 4 rule(s)
+2026-10-22 08:07:12,037 | INFO    | qa.runner              | [DM-011] START  sale_date equals sale_date_key; text values fit DDL lengths
+2026-10-22 08:07:13,356 | INFO    | qa.runner              | [DM-011] PASS  (1.319s) sale_date matches sale_date_key; all text values fit DDL lengths
+2026-10-22 08:07:13,357 | INFO    | qa.runner              | [DM-012] START  Every data-mart record can be attributed to a customer (customer_id populated)
+2026-10-22 08:07:13,420 | INFO    | qa.runner              | [DM-012] FAIL  (0.063s) 1,391 of 45,076 records failed: No customer reference in data mart (blank customer_id in source)
+2026-10-22 08:07:16,014 | INFO    | qa.report              | Reports written to C:\qa-lab\distributor-sales-qa\reports
+2026-10-22 08:07:16,016 | INFO    | qa.database            | MySQL connection closed
+2026-10-22 09:15:40,497 | INFO    | qa.run                 | === QA RUN 20261022_091540 START: 131 validations (skip_db=False) ===
+2026-10-22 09:15:40,561 | INFO    | qa.runner              | [FIL-001] START  Distributor Sales (JSON): file exists, is non-empty and readable
+2026-10-22 09:15:41,663 | INFO    | qa.context             | Loaded Distributor Sales: 50000 rows, encoding=utf-8
+2026-10-22 09:15:41,663 | INFO    | qa.runner              | [FIL-001] PASS  (1.105s) dim_Distributor_sales_50k.json: 30,060,296 bytes, encoding=utf-8, 50,000 records, 17 columns
+2026-10-22 09:15:41,678 | INFO    | qa.runner              | [FIL-002] START  Fact Sales (CSV): file exists, is non-empty and readable
+2026-10-22 09:15:42,428 | INFO    | qa.context             | Loaded Fact Sales: 50000 rows, encoding=utf-8
+2026-10-22 09:15:42,428 | INFO    | qa.runner              | [FIL-002] PASS  (0.753s) Fact_Sales_50k_CSV.csv: 10,854,084 bytes, encoding=utf-8, 50,000 records, 27 columns
+2026-10-22 09:15:42,428 | INFO    | qa.runner              | [FIL-003] START  Customer Master (TXT/CSV): file exists, is non-empty and readable
+2026-10-22 09:15:42,988 | INFO    | qa.context             | Loaded Customer Master: 50000 rows, encoding=utf-8
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-003] PASS  (0.565s) dim_Customer_Master_50k.txt: 10,767,003 bytes, encoding=utf-8, 50,000 records, 22 columns
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-004] START  Distributor Sales (JSON): column names match the expected layout
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-004] PASS  (0.0s) All 17 expected columns present
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-005] START  Fact Sales (CSV): column names match the expected layout
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-005] PASS  (0.0s) All 27 expected columns present
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-006] START  Customer Master (TXT/CSV): column names match the expected layout
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-006] PASS  (0.0s) All 22 expected columns present
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-007] START  Distributor Sales (JSON): delimiter / record structure is well-formed
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-007] PASS  (0.0s) All 50,000 records well-formed (format=json, delimiter='n/a')
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-008] START  Fact Sales (CSV): delimiter / record structure is well-formed
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-008] PASS  (0.0s) All 50,000 records well-formed (format=delimited, delimiter=',')
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-009] START  Customer Master (TXT/CSV): delimiter / record structure is well-formed
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-009] PASS  (0.0s) All 50,000 records well-formed (format=delimited, delimiter=',')
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-010] START  Distributor Sales (JSON): record count is non-zero and as expected
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-010] PASS  (0.0s) 50,000 records
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-011] START  Fact Sales (CSV): record count is non-zero and as expected
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-011] PASS  (0.0s) 50,000 records
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-012] START  Customer Master (TXT/CSV): record count is non-zero and as expected
+2026-10-22 09:15:42,988 | INFO    | qa.runner              | [FIL-012] PASS  (0.0s) 50,000 records
+2026-10-22 09:15:43,004 | INFO    | qa.runner              | [DST-001] START  Mandatory (NOT NULL) fields are populated
+2026-10-22 09:15:43,643 | INFO    | qa.runner              | [DST-001] PASS  (0.639s) All 10 mandatory columns populated in all 50,000 records
+2026-10-22 09:15:43,644 | INFO    | qa.runner              | [DST-002] START  distributor_txn_id is unique (no duplicate transactions)
+2026-10-22 09:15:43,756 | INFO    | qa.runner              | [DST-002] PASS  (0.123s) distributor_txn_id is unique across all 50,000 records
+2026-10-22 09:15:43,756 | INFO    | qa.runner              | [DST-003] START  policy_number is unique (DDL unique key)
+2026-10-22 09:15:43,836 | INFO    | qa.runner              | [DST-003] PASS  (0.081s) policy_number is unique across all 50,000 records
+2026-10-22 09:15:43,836 | INFO    | qa.runner              | [DST-004] START  distributor_txn_id follows format DSC + 14 digits
+2026-10-22 09:15:43,900 | INFO    | qa.runner              | [DST-004] PASS  (0.065s) All 50,000 records passed (no violation of: distributor_txn_id does not match required format ^DSC\d{14}$)
+2026-10-22 09:15:43,900 | INFO    | qa.runner              | [DST-005] START  Date / datetime fields are valid
+2026-10-22 09:15:45,868 | INFO    | qa.runner              | [DST-005] PASS  (1.967s) All date/time values valid in 3 column(s)
+2026-10-22 09:15:45,868 | INFO    | qa.runner              | [DST-006] START  gross_amount / commission_amount are numeric
+2026-10-22 09:15:45,868 | INFO    | qa.runner              | [DST-006] PASS  (0.001s) All decimal number values valid in 2 column(s)
+2026-10-22 09:15:45,884 | INFO    | qa.runner              | [DST-007] START  gross_amount > 0 and 0 <= commission_amount <= gross_amount
+2026-10-22 09:15:45,888 | INFO    | qa.runner              | [DST-007] PASS  (0.005s) All 50,000 records satisfy 3 rule(s)
+2026-10-22 09:15:45,888 | INFO    | qa.runner              | [DST-008] START  status is one of APPROVED / REJECTED / CANCELLED
+2026-10-22 09:15:45,933 | INFO    | qa.runner              | [DST-008] PASS  (0.051s) All 50,000 records passed (no violation of: status not in allowed values ['APPROVED', 'REJECTED', 'CANCELLED'])
+2026-10-22 09:15:45,933 | INFO    | qa.runner              | [DST-009] START  product_type_raw is a recognised product type
+2026-10-22 09:15:45,997 | INFO    | qa.runner              | [DST-009] PASS  (0.059s) All 50,000 records passed (no violation of: product_type_raw not in allowed values ['MF', 'SIP', 'Equity Fund', 'Debt Fund', 'INS', 'Insurance', 'ULIP'])
+2026-10-22 09:15:45,997 | INFO    | qa.runner              | [DST-010] START  region_code (when populated) is a valid region
+2026-10-22 09:15:46,062 | INFO    | qa.runner              | [DST-010] PASS  (0.065s) All 50,000 records passed (no violation of: region_code not in allowed values ['NORTH', 'SOUTH', 'EAST', 'WEST', 'CENTRAL'])
+2026-10-22 09:15:46,062 | INFO    | qa.runner              | [DST-011] START  updated_at >= created_at
+2026-10-22 09:15:46,062 | INFO    | qa.runner              | [DST-011] PASS  (0.005s) All 50,000 records passed (no violation of: updated_at earlier than created_at)
+2026-10-22 09:15:46,062 | INFO    | qa.runner              | [DST-012] START  customer_id (when populated) follows format CUST + digits
+2026-10-22 09:15:46,158 | INFO    | qa.runner              | [DST-012] PASS  (0.094s) All 50,000 records passed (no violation of: customer_id does not match required format ^CUST\d+$)
+2026-10-22 09:15:46,158 | INFO    | qa.runner              | [DST-013] START  customer_pan (when populated) is a valid PAN
+2026-10-22 09:15:46,269 | INFO    | qa.runner              | [DST-013] PASS  (0.105s) All 50,000 records passed (no violation of: customer_pan does not match required format ^[A-Z]{5}[0-9]{4}[A-Z]$)
+2026-10-22 09:15:46,269 | INFO    | qa.runner              | [DST-014] START  Text values fit DDL column lengths
+2026-10-22 09:15:46,602 | INFO    | qa.runner              | [DST-014] PASS  (0.333s) No value exceeds its DDL length (12 text columns)
+2026-10-22 09:15:46,602 | INFO    | qa.runner              | [DST-015] START  Optional columns are not excessively blank (distributor_name, customer_id, PAN, region)
+2026-10-22 09:15:47,177 | INFO    | qa.runner              | [DST-015] FAIL  (0.573s) distributor_name is 100.0% blank (tolerance 5%); customer_id is 3.08% blank (tolerance 1%); customer_pan is 9.93% blank (tolerance 5%); region_code is 16.63% bl
+2026-10-22 09:15:47,177 | INFO    | qa.runner              | [DST-016] START  sale_date is within a plausible window (not in future / before min date)
+2026-10-22 09:15:47,177 | INFO    | qa.runner              | [DST-016] PASS  (0.007s) All 50,000 records passed (no violation of: sale_date earlier than 2000-01-01 or in the future)
+2026-10-22 09:15:47,177 | INFO    | qa.runner              | [DST-017] START  No leading/trailing whitespace in values
+2026-10-22 09:15:48,387 | INFO    | qa.runner              | [DST-017] PASS  (1.202s) No leading/trailing whitespace found
+2026-10-22 09:15:48,387 | INFO    | qa.runner              | [DST-018] START  product_code follows format (MF|INS)_<code>
+2026-10-22 09:15:48,471 | INFO    | qa.runner              | [DST-018] PASS  (0.087s) All 50,000 records passed (no violation of: product_code does not match required format ^(MF|INS)_[A-Z0-9_]+$)
+2026-10-22 09:15:48,471 | INFO    | qa.runner              | [FAC-001] START  Mandatory (NOT NULL) fields are populated
+2026-10-22 09:15:49,173 | INFO    | qa.runner              | [FAC-001] PASS  (0.709s) All 19 mandatory columns populated in all 50,000 records
+2026-10-22 09:15:49,173 | INFO    | qa.runner              | [FAC-002] START  sales_sk (surrogate key) is unique
+2026-10-22 09:15:49,256 | INFO    | qa.runner              | [FAC-002] PASS  (0.069s) sales_sk is unique across all 50,000 records
+2026-10-22 09:15:49,257 | INFO    | qa.runner              | [FAC-003] START  distributor_txn_id is unique (no duplicate transactions)
+2026-10-22 09:15:49,305 | INFO    | qa.runner              | [FAC-003] PASS  (0.052s) distributor_txn_id is unique across all 50,000 records
+2026-10-22 09:15:49,305 | INFO    | qa.runner              | [FAC-004] START  policy_number is unique
+2026-10-22 09:15:49,381 | INFO    | qa.runner              | [FAC-004] PASS  (0.074s) policy_number is unique across all 50,000 records
+2026-10-22 09:15:49,381 | INFO    | qa.runner              | [FAC-005] START  Numeric / integer fields are valid numbers
+2026-10-22 09:15:52,095 | INFO    | qa.runner              | [FAC-005] PASS  (2.713s) All number values valid in 17 column(s)
+2026-10-22 09:15:52,095 | INFO    | qa.runner              | [FAC-006] START  Amount rules: gross>0, net/tax/discount>=0, 0<=commission<=gross, 0<=commission_pct<=15, txn_count=1
+2026-10-22 09:15:52,160 | INFO    | qa.runner              | [FAC-006] PASS  (0.067s) All 50,000 records satisfy 8 rule(s)
+2026-10-22 09:15:52,160 | INFO    | qa.runner              | [FAC-007] START  Flags (is_new_customer_flag, is_high_value_flag) are Y/N
+2026-10-22 09:15:52,160 | INFO    | qa.runner              | [FAC-007] PASS  (0.008s) All 50,000 records passed (no violation of: Flag value not in Y/N)
+2026-10-22 09:15:52,175 | INFO    | qa.runner              | [FAC-008] START  status is one of APPROVED / REJECTED / CANCELLED
+2026-10-22 09:15:52,227 | INFO    | qa.runner              | [FAC-008] PASS  (0.053s) All 50,000 records passed (no violation of: status not in allowed values ['APPROVED', 'REJECTED', 'CANCELLED'])
+2026-10-22 09:15:52,227 | INFO    | qa.runner              | [FAC-009] START  Datetime fields valid and src_updated_at >= src_created_at
+2026-10-22 09:15:52,235 | INFO    | qa.runner              | [FAC-009] PASS  (0.008s) All 50,000 records satisfy 2 rule(s)
+2026-10-22 09:15:52,235 | INFO    | qa.runner              | [FAC-010] START  sale_date_key is a valid yyyymmdd date
+2026-10-22 09:15:52,353 | INFO    | qa.runner              | [FAC-010] PASS  (0.116s) All 50,000 records passed (no violation of: sale_date_key is not a valid yyyymmdd date)
+2026-10-22 09:15:52,353 | INFO    | qa.runner              | [FAC-011] START  Text values fit DDL column lengths
+2026-10-22 09:15:52,462 | INFO    | qa.runner              | [FAC-011] PASS  (0.12s) No value exceeds its DDL length (7 text columns)
+2026-10-22 09:15:52,462 | INFO    | qa.runner              | [FAC-012] START  customer_key is populated (blank-rate within tolerance)
+2026-10-22 09:15:52,574 | INFO    | qa.runner              | [FAC-012] FAIL  (0.1s) customer_key is 3.08% blank (tolerance 1%)
+2026-10-22 09:15:52,574 | INFO    | qa.runner              | [CUS-001] START  Mandatory (NOT NULL) customer fields are populated
+2026-10-22 09:15:53,408 | INFO    | qa.runner              | [CUS-001] PASS  (0.843s) All 21 mandatory columns populated in all 50,000 records
+2026-10-22 09:15:53,408 | INFO    | qa.runner              | [CUS-002] START  customer_key (primary key) is unique
+2026-10-22 09:15:53,487 | INFO    | qa.runner              | [CUS-002] PASS  (0.072s) customer_key is unique across all 50,000 records
+2026-10-22 09:15:53,487 | INFO    | qa.runner              | [CUS-003] START  policy_number is unique (DDL unique key)
+2026-10-22 09:15:53,555 | INFO    | qa.runner              | [CUS-003] PASS  (0.072s) policy_number is unique across all 50,000 records
+2026-10-22 09:15:53,555 | INFO    | qa.runner              | [CUS-004] START  customer_id is unique (no duplicate customer records)
+2026-10-22 09:15:53,711 | INFO    | qa.runner              | [CUS-004] FAIL  (0.155s) 1,254 duplicated customer_id values affecting 2,525 of 50,000 records
+2026-10-22 09:15:53,711 | INFO    | qa.runner              | [CUS-005] START  Records sharing a customer_id do not carry conflicting identity attributes (PAN / DOB)
+2026-10-22 09:15:53,868 | INFO    | qa.runner              | [CUS-005] FAIL  (0.16s) 1,254 customer_id values shared by records with conflicting PAN/DOB
+2026-10-22 09:15:53,868 | INFO    | qa.runner              | [CUS-006] START  customer_id follows format CUC + digits
+2026-10-22 09:15:53,961 | INFO    | qa.runner              | [CUS-006] PASS  (0.081s) All 50,000 records passed (no violation of: customer_id does not match required format ^CUC\d+$)
+2026-10-22 09:15:53,961 | INFO    | qa.runner              | [CUS-007] START  gender, kyc_status, customer_segment, active_flag hold valid values
+2026-10-22 09:15:53,978 | INFO    | qa.runner              | [CUS-007] PASS  (0.021s) All 50,000 records satisfy 4 rule(s)
+2026-10-22 09:15:53,978 | INFO    | qa.runner              | [CUS-008] START  email, mobile, pincode and PAN have valid formats
+2026-10-22 09:15:54,408 | INFO    | qa.runner              | [CUS-008] PASS  (0.427s) All 50,000 records satisfy 4 rule(s)
+2026-10-22 09:15:54,408 | INFO    | qa.runner              | [CUS-009] START  Numeric and date fields are valid
+2026-10-22 09:15:56,101 | INFO    | qa.runner              | [CUS-009] PASS  (1.696s) All number/date values valid in 6 column(s)
+2026-10-22 09:15:56,101 | INFO    | qa.runner              | [CUS-010] START  annual_income >= 0; DOB not in future; customer was an adult at onboarding
+2026-10-22 09:15:56,134 | INFO    | qa.runner              | [CUS-010] PASS  (0.036s) All 50,000 records satisfy 4 rule(s)
+2026-10-22 09:15:56,134 | INFO    | qa.runner              | [CUS-011] START  updated_at >= created_at
+2026-10-22 09:15:56,153 | INFO    | qa.runner              | [CUS-011] PASS  (0.007s) All 50,000 records passed (no violation of: updated_at earlier than created_at)
+2026-10-22 09:15:56,153 | INFO    | qa.runner              | [CUS-012] START  Text values fit DDL column lengths
+2026-10-22 09:15:56,452 | INFO    | qa.runner              | [CUS-012] PASS  (0.298s) No value exceeds its DDL length (16 text columns)
+2026-10-22 09:15:56,452 | INFO    | qa.runner              | [CUS-013] START  No leading/trailing whitespace in values
+2026-10-22 09:15:57,681 | INFO    | qa.runner              | [CUS-013] PASS  (1.239s) No leading/trailing whitespace found
+2026-10-22 09:15:57,681 | INFO    | qa.runner              | [REF-001] START  Every distributor customer_id exists in Customer Master (customer_id)
+2026-10-22 09:15:57,935 | INFO    | qa.runner              | [REF-001] FAIL  (0.244s) 48,461 of 48,461 sales (100.0%) reference a customer_id absent from Customer Master; 44,753 distinct ids. Sample id 'CUST313217' vs master format 'CUC1879727'
+2026-10-22 09:15:57,935 | INFO    | qa.runner              | [REF-002] START  Every Fact_Sales customer_key exists in Customer Master (customer_key)
+2026-10-22 09:15:58,245 | INFO    | qa.runner              | [REF-002] FAIL  (0.308s) 48,461 of 48,461 fact rows reference a customer_key absent from Customer Master (fact keys 100,004-400,000; master keys 1-50,000)
+2026-10-22 09:15:58,252 | INFO    | qa.runner              | [REF-003] START  customer_id (distributor) <-> customer_key (fact) mapping is one-to-one
+2026-10-22 09:15:58,669 | INFO    | qa.runner              | [REF-003] PASS  (0.419s) 44,753 customer_id values map 1:1 to customer_key
+2026-10-22 09:15:58,669 | INFO    | qa.runner              | [REF-004] START  Blank customer_id in source <=> blank customer_key in Fact_Sales
+2026-10-22 09:15:58,812 | INFO    | qa.runner              | [REF-004] PASS  (0.142s) All 50,000 records passed (no violation of: customer reference populated in only one of source / fact)
+2026-10-22 09:15:58,812 | INFO    | qa.runner              | [REF-005] START  customer_pan agrees between Distributor Sales and Customer Master (linked by policy_number) [inferred link]
+2026-10-22 09:15:59,025 | INFO    | qa.runner              | [REF-005] FAIL  (0.208s) 45,035 of 45,035 records failed: PAN differs between source and Customer Master
+2026-10-22 09:15:59,025 | INFO    | qa.runner              | [REF-006] START  Sales do not reference inactive (active_flag=N) or KYC-REJECTED customers
+2026-10-22 09:15:59,196 | INFO    | qa.runner              | [REF-006] SKIPPED  (0.17s) BLOCKED: no sale resolves to a Customer Master record, so customer status cannot be evaluated (see REF-001)
+2026-10-22 09:15:59,196 | INFO    | qa.runner              | [REF-007] START  Every Customer Master policy_number exists in Distributor Sales (no orphan customers)
+2026-10-22 09:15:59,275 | INFO    | qa.runner              | [REF-007] PASS  (0.074s) All 50,000 records passed (no violation of: Customer policy_number has no sales record)
+2026-10-22 09:15:59,275 | INFO    | qa.runner              | [DB-001] START  Database connection can be established
+2026-10-22 09:16:00,859 | INFO    | qa.database            | Connecting to MySQL 127.0.0.1:3306/python_project2 as python_p2_learner
+2026-10-22 09:16:01,815 | INFO    | qa.runner              | [DB-001] PASS  (2.543s) Connected to MySQL 8.0.46 at 127.0.0.1:3306 db=python_project2 user=python_p2_learner
+2026-10-22 09:16:01,815 | INFO    | qa.runner              | [DB-002] START  Required source tables and the data mart exist
+2026-10-22 09:16:01,961 | INFO    | qa.runner              | [DB-002] PASS  (0.147s) All 4 tables exist: dim_Distributor_sales, Fact_Sales, dim_Customer_Master, dm_Distributor_Sales_Customer_360
+2026-10-22 09:16:01,961 | INFO    | qa.runner              | [DB-003] START  Table columns and data types match the DDL-derived schema
+2026-10-22 09:16:01,976 | INFO    | qa.runner              | [DB-003] PASS  (0.023s) All 123 columns across 4 tables match schema
+2026-10-22 09:16:01,976 | INFO    | qa.runner              | [DB-004] START  All tables contain data (record counts reported)
+2026-10-22 09:16:03,833 | INFO    | qa.runner              | [DB-004] PASS  (1.846s) dim_Distributor_sales=50,000, Fact_Sales=50,000, dim_Customer_Master=50,000, dm_Distributor_Sales_Customer_360=45,076
+2026-10-22 09:16:03,833 | INFO    | qa.runner              | [DBQ-001] START  SQL: no duplicate distributor_txn_id in data mart
+2026-10-22 09:16:04,195 | INFO    | qa.runner              | [DBQ-001] PASS  (0.371s) Query 'dm_dup_txn' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:04,195 | INFO    | qa.runner              | [DBQ-002] START  SQL: no duplicate policy_number in data mart
+2026-10-22 09:16:04,265 | INFO    | qa.runner              | [DBQ-002] PASS  (0.061s) Query 'dm_dup_policy' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:04,265 | INFO    | qa.runner              | [DBQ-003] START  SQL: no duplicate sales_sk in data mart
+2026-10-22 09:16:04,306 | INFO    | qa.runner              | [DBQ-003] PASS  (0.046s) Query 'dm_dup_sales_sk' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:04,306 | INFO    | qa.runner              | [DBQ-004] START  SQL: no duplicate distributor_txn_id in dim_Distributor_sales
+2026-10-22 09:16:04,755 | INFO    | qa.runner              | [DBQ-004] PASS  (0.445s) Query 'dist_dup_txn' returned 0 offending rows (of 50,000 dim_Distributor_sales rows)
+2026-10-22 09:16:04,755 | INFO    | qa.runner              | [DBQ-005] START  SQL: no duplicate distributor_txn_id in Fact_Sales
+2026-10-22 09:16:04,819 | INFO    | qa.runner              | [DBQ-005] PASS  (0.057s) Query 'fact_dup_txn' returned 0 offending rows (of 50,000 Fact_Sales rows)
+2026-10-22 09:16:04,819 | INFO    | qa.runner              | [DBQ-006] START  SQL: no duplicate customer_id in dim_Customer_Master
+2026-10-22 09:16:05,488 | INFO    | qa.runner              | [DBQ-006] FAIL  (0.672s) Query 'cust_dup_customer_id' returned 1,254 offending row(s) of 50,000
+2026-10-22 09:16:05,488 | INFO    | qa.runner              | [DBQ-007] START  SQL: every data-mart sales_sk exists in Fact_Sales
+2026-10-22 09:16:06,160 | INFO    | qa.runner              | [DBQ-007] PASS  (0.673s) Query 'dm_orphan_fact' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:06,160 | INFO    | qa.runner              | [DBQ-008] START  SQL: every data-mart txn+policy exists in dim_Distributor_sales
+2026-10-22 09:16:06,620 | INFO    | qa.runner              | [DBQ-008] PASS  (0.455s) Query 'dm_orphan_dist' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:06,620 | INFO    | qa.runner              | [DBQ-009] START  SQL: every data-mart customer_key exists in dim_Customer_Master
+2026-10-22 09:16:06,641 | INFO    | qa.runner              | [DBQ-009] PASS  (0.019s) Query 'dm_orphan_customer' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:06,641 | INFO    | qa.runner              | [DBQ-010] START  SQL: data mart holds only APPROVED transactions
+2026-10-22 09:16:06,696 | INFO    | qa.runner              | [DBQ-010] PASS  (0.061s) Query 'dm_non_approved' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:06,696 | INFO    | qa.runner              | [DBQ-011] START  SQL: every APPROVED source transaction is present in the data mart (no missing records)
+2026-10-22 09:16:06,992 | INFO    | qa.runner              | [DBQ-011] PASS  (0.295s) Query 'approved_missing_in_dm' returned 0 offending rows (of 50,000 Fact_Sales rows)
+2026-10-22 09:16:06,992 | INFO    | qa.runner              | [DBQ-012] START  SQL: no unexpected (extra) records in the data mart
+2026-10-22 09:16:07,252 | INFO    | qa.runner              | [DBQ-012] PASS  (0.252s) Query 'dm_extra_vs_source' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:07,252 | INFO    | qa.runner              | [DBQ-013] START  SQL: data-mart rows with a customer_id are enriched from Customer Master
+2026-10-22 09:16:07,439 | INFO    | qa.runner              | [DBQ-013] FAIL  (0.188s) Query 'dm_customer_not_enriched' returned 43,685 offending row(s) of 45,076
+2026-10-22 09:16:07,439 | INFO    | qa.runner              | [DBQ-014] START  SQL: data-mart measures equal Fact_Sales measures
+2026-10-22 09:16:07,694 | INFO    | qa.runner              | [DBQ-014] PASS  (0.251s) Query 'dm_vs_fact_measures' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:07,694 | INFO    | qa.runner              | [DBQ-015] START  SQL: data-mart distributor attributes equal dim_Distributor_sales
+2026-10-22 09:16:07,962 | INFO    | qa.runner              | [DBQ-015] PASS  (0.27s) Query 'dm_vs_dist_attributes' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:07,962 | INFO    | qa.runner              | [DBQ-016] START  SQL: Fact_Sales core fields equal dim_Distributor_sales
+2026-10-22 09:16:08,348 | INFO    | qa.runner              | [DBQ-016] PASS  (0.384s) Query 'fact_vs_dist_core' returned 0 offending rows (of 50,000 Fact_Sales rows)
+2026-10-22 09:16:08,348 | INFO    | qa.runner              | [DBQ-017] START  SQL: data-mart load timestamp is not in the future
+2026-10-22 09:16:08,399 | INFO    | qa.runner              | [DBQ-017] PASS  (0.054s) Query 'dm_future_load_ts' returned 0 offending rows (of 45,076 dm_Distributor_Sales_Customer_360 rows)
+2026-10-22 09:16:08,399 | INFO    | qa.runner              | [REC-001] START  dim_Distributor_sales: file record count equals table row count
+2026-10-22 09:16:09,914 | INFO    | qa.context             | Read table dim_Distributor_sales: 50000 rows
+2026-10-22 09:16:09,914 | INFO    | qa.runner              | [REC-001] PASS  (1.513s) File=50,000 Table=50,000
+2026-10-22 09:16:09,914 | INFO    | qa.runner              | [REC-002] START  Fact_Sales: file record count equals table row count
+2026-10-22 09:16:12,463 | INFO    | qa.context             | Read table Fact_Sales: 50000 rows
+2026-10-22 09:16:12,463 | INFO    | qa.runner              | [REC-002] PASS  (2.541s) File=50,000 Table=50,000
+2026-10-22 09:16:12,463 | INFO    | qa.runner              | [REC-003] START  dim_Customer_Master: file record count equals table row count
+2026-10-22 09:16:14,097 | INFO    | qa.context             | Read table dim_Customer_Master: 50000 rows
+2026-10-22 09:16:14,097 | INFO    | qa.runner              | [REC-003] PASS  (1.642s) File=50,000 Table=50,000
+2026-10-22 09:16:14,112 | INFO    | qa.runner              | [REC-004] START  dim_Distributor_sales: no file records missing from, or extra in, the table (key distributor_txn_id)
+2026-10-22 09:16:14,908 | INFO    | qa.runner              | [REC-004] PASS  (0.803s) All 50,000 keys present in both
+2026-10-22 09:16:14,908 | INFO    | qa.runner              | [REC-005] START  Fact_Sales: no file records missing from, or extra in, the table (key sales_sk)
+2026-10-22 09:16:15,996 | INFO    | qa.runner              | [REC-005] PASS  (1.082s) All 50,000 keys present in both
+2026-10-22 09:16:15,996 | INFO    | qa.runner              | [REC-006] START  dim_Customer_Master: no file records missing from, or extra in, the table (key customer_key)
+2026-10-22 09:16:16,795 | INFO    | qa.runner              | [REC-006] PASS  (0.809s) All 50,000 keys present in both
+2026-10-22 09:16:16,795 | INFO    | qa.runner              | [REC-007] START  dim_Distributor_sales: every column of every record matches between file and table
+2026-10-22 09:16:17,308 | INFO    | qa.runner              | [REC-007] PASS  (0.511s) 50,000 records x 16 columns compared - all match
+2026-10-22 09:16:17,308 | INFO    | qa.runner              | [REC-008] START  Fact_Sales: every column of every record matches between file and table
+2026-10-22 09:16:17,500 | INFO    | qa.runner              | [REC-008] PASS  (0.186s) 50,000 records x 26 columns compared - all match
+2026-10-22 09:16:17,500 | INFO    | qa.runner              | [REC-009] START  dim_Customer_Master: every column of every record matches between file and table
+2026-10-22 09:16:17,977 | INFO    | qa.runner              | [REC-009] PASS  (0.477s) 50,000 records x 21 columns compared - all match
+2026-10-22 09:16:17,977 | INFO    | qa.runner              | [REC-010] START  Every distributor transaction has a Fact_Sales record and vice-versa
+2026-10-22 09:16:18,041 | INFO    | qa.runner              | [REC-010] PASS  (0.059s) All 50,000 transactions exist in both sources
+2026-10-22 09:16:18,041 | INFO    | qa.runner              | [REC-011] START  Policy, gross, commission, status, timestamps and sale date agree between Distributor Sales and Fact_Sales
+2026-10-22 09:16:18,642 | INFO    | qa.runner              | [REC-011] PASS  (0.596s) 50,000 records x 7 columns compared - all match
+2026-10-22 09:16:18,642 | INFO    | qa.runner              | [REC-020] START  Data-mart row count equals expected (APPROVED fact rows joined to distributor on txn+policy)
+2026-10-22 09:16:21,866 | INFO    | qa.context             | Read table dm_Distributor_Sales_Customer_360: 45076 rows
+2026-10-22 09:16:22,313 | INFO    | qa.runner              | [REC-020] PASS  (3.672s) Expected=45,076 Actual=45,076 (fact=50,000 -> APPROVED=45,076 -> after distributor join & customer left-join=45,076)
+2026-10-22 09:16:22,315 | INFO    | qa.runner              | [REC-021] START  No expected transactions are missing from the data mart
+2026-10-22 09:16:24,292 | INFO    | qa.runner              | [REC-021] PASS  (1.983s) All 45,076 expected transactions are present
+2026-10-22 09:16:24,292 | INFO    | qa.runner              | [REC-022] START  No unexpected (extra) records exist in the data mart (e.g. REJECTED/CANCELLED)
+2026-10-22 09:16:24,661 | INFO    | qa.runner              | [REC-022] PASS  (0.368s) No unexpected records among 45,076 data-mart rows
+2026-10-22 09:16:24,661 | INFO    | qa.runner              | [REC-023] START  Fact-derived keys, measures, flags and audit dates match the source
+2026-10-22 09:16:25,151 | INFO    | qa.runner              | [REC-023] PASS  (0.483s) 45,076 records x 21 columns compared - all match
+2026-10-22 09:16:25,151 | INFO    | qa.runner              | [REC-024] START  Distributor attributes and derived product family/category/flags match the transformation rules
+2026-10-22 09:16:25,798 | INFO    | qa.runner              | [REC-024] PASS  (0.652s) 45,076 records x 13 columns compared - all match
+2026-10-22 09:16:25,798 | INFO    | qa.runner              | [REC-025] START  Customer attributes in the data mart match the Customer Master join result
+2026-10-22 09:16:26,260 | INFO    | qa.runner              | [REC-025] PASS  (0.457s) 45,076 records x 19 columns compared - all match
+2026-10-22 09:16:26,260 | INFO    | qa.runner              | [REC-026] START  Aggregates (count, gross, net, commission, tax, discount) agree overall and by product category / distributor
+2026-10-22 09:16:26,742 | INFO    | qa.runner              | [REC-026] PASS  (0.484s) 144 aggregate figures agree (overall, by product_category, distributor_code, region_key)
+2026-10-22 09:16:26,742 | INFO    | qa.runner              | [BR-001] START  sale_date equals the calendar date of created_at [inferred rule]
+2026-10-22 09:16:26,752 | INFO    | qa.runner              | [BR-001] PASS  (0.008s) All 50,000 records passed (no violation of: sale_date differs from date of created_at (temporal drift))
+2026-10-22 09:16:26,756 | INFO    | qa.runner              | [BR-002] START  Fact sale_date_key equals Distributor sale_date (no date drift between systems)
+2026-10-22 09:16:27,244 | INFO    | qa.runner              | [BR-002] PASS  (0.493s) All 50,000 records passed (no violation of: sale_date_key does not match sale_date)
+2026-10-22 09:16:27,244 | INFO    | qa.runner              | [CAL-001] START  net_amount = gross_amount - commission_amount [inferred rule]
+2026-10-22 09:16:27,287 | INFO    | qa.runner              | [CAL-001] PASS  (0.038s) All 50,000 records passed (no violation of: net_amount <> gross_amount - commission_amount)
+2026-10-22 09:16:27,288 | INFO    | qa.runner              | [CAL-002] START  commission_pct = commission_amount / gross_amount x 100 (3 d.p.)
+2026-10-22 09:16:27,293 | INFO    | qa.runner              | [CAL-002] PASS  (0.007s) All 50,000 records passed (no violation of: commission_pct inconsistent with commission_amount / gross_amount)
+2026-10-22 09:16:27,293 | INFO    | qa.runner              | [CAL-003] START  Mutual-fund rows: units_allocated x nav_at_purchase ~= gross_amount [inferred rule]
+2026-10-22 09:16:27,293 | INFO    | qa.runner              | [CAL-003] PASS  (0.005s) All 28,673 records passed (no violation of: units x NAV differs from gross_amount beyond tolerance)
+2026-10-22 09:16:27,293 | INFO    | qa.runner              | [CAL-004] START  Insurance rows: premium_amount <= gross_amount and sum_assured > premium_amount
+2026-10-22 09:16:27,307 | INFO    | qa.runner              | [CAL-004] PASS  (0.011s) All 21,327 records satisfy 2 rule(s)
+2026-10-22 09:16:27,307 | INFO    | qa.runner              | [CAL-005] START  Decimal precision does not exceed DDL scale (no silent rounding on load)
+2026-10-22 09:16:28,190 | INFO    | qa.runner              | [CAL-005] PASS  (0.88s) All decimal values fit their DDL scale
+2026-10-22 09:16:28,190 | INFO    | qa.runner              | [CAL-006] START  is_high_value_flag = 'Y' exactly when gross_amount >= threshold [inferred rule]
+2026-10-22 09:16:28,211 | INFO    | qa.runner              | [CAL-006] PASS  (0.02s) All 50,000 records passed (no violation of: is_high_value_flag inconsistent with gross_amount >= 100,000)
+2026-10-22 09:16:28,211 | INFO    | qa.runner              | [CAL-007] START  Data mart: net_amount = gross_amount - commission_amount
+2026-10-22 09:16:28,220 | INFO    | qa.runner              | [CAL-007] PASS  (0.008s) All 45,076 records passed (no violation of: net_amount <> gross_amount - commission_amount)
+2026-10-22 09:16:28,220 | INFO    | qa.runner              | [CAL-008] START  Data mart: commission_pct consistent with commission_amount / gross_amount
+2026-10-22 09:16:28,225 | INFO    | qa.runner              | [CAL-008] PASS  (0.004s) All 45,076 records passed (no violation of: commission_pct inconsistent)
+2026-10-22 09:16:28,225 | INFO    | qa.runner              | [MAP-001] START  region_key <-> region_code is one-to-one
+2026-10-22 09:16:28,368 | INFO    | qa.runner              | [MAP-001] PASS  (0.145s) 5 region_key values map 1:1 to region_code
+2026-10-22 09:16:28,368 | INFO    | qa.runner              | [MAP-002] START  region_code is populated for every record that has a region_key (key resolves to a code)
+2026-10-22 09:16:28,526 | INFO    | qa.runner              | [MAP-002] FAIL  (0.154s) 8,315 of 50,000 records failed: region_key present but region_code blank in Distributor Sales; blanks occur only for region_key in ['1']
+2026-10-22 09:16:28,526 | INFO    | qa.runner              | [MAP-003] START  distributor_key <-> distributor_code is one-to-one
+2026-10-22 09:16:28,633 | INFO    | qa.runner              | [MAP-003] PASS  (0.104s) 16 distributor_key values map 1:1 to distributor_code
+2026-10-22 09:16:28,633 | INFO    | qa.runner              | [PRD-001] START  product_code prefix identifies a known family (unknown prefixes would silently default to MF in the data mart)
+2026-10-22 09:16:28,669 | INFO    | qa.runner              | [PRD-001] PASS  (0.043s) All 50,000 records passed (no violation of: product_code prefix is neither MF nor INS)
+2026-10-22 09:16:28,669 | INFO    | qa.runner              | [PRD-002] START  Product / product-family combination valid: product_type_raw belongs to the family given by product_code
+2026-10-22 09:16:28,774 | INFO    | qa.runner              | [PRD-002] PASS  (0.102s) All 50,000 records passed (no violation of: product_type_raw is inconsistent with product family)
+2026-10-22 09:16:28,780 | INFO    | qa.runner              | [PRD-003] START  Family-specific fields: MF has units/NAV/folio and no premium/sum assured; INS the reverse [inferred rule]
+2026-10-22 09:16:29,165 | INFO    | qa.runner              | [PRD-003] PASS  (0.39s) All 50,000 records satisfy 10 rule(s)
+2026-10-22 09:16:29,165 | INFO    | qa.runner              | [PRD-004] START  product_key <-> product_code is one-to-one
+2026-10-22 09:16:29,259 | INFO    | qa.runner              | [PRD-004] PASS  (0.101s) 14 product_key values map 1:1 to product_code
+2026-10-22 09:16:29,259 | INFO    | qa.runner              | [PRD-005] START  Each product_code carries exactly one product_name_raw and one product_type_raw
+2026-10-22 09:16:29,321 | INFO    | qa.runner              | [PRD-005] PASS  (0.049s) 14 product codes each map to one name and one type
+2026-10-22 09:16:29,321 | INFO    | qa.runner              | [DM-001] START  Mandatory (NOT NULL) data-mart columns are populated
+2026-10-22 09:16:29,896 | INFO    | qa.runner              | [DM-001] PASS  (0.575s) All 28 mandatory columns populated in all 45,076 records
+2026-10-22 09:16:29,896 | INFO    | qa.runner              | [DM-002] START  Domains: status, product_family, product_category, flags, gender, kyc_status, segment hold valid values
+2026-10-22 09:16:29,983 | INFO    | qa.runner              | [DM-002] PASS  (0.089s) All 45,076 records satisfy 11 rule(s)
+2026-10-22 09:16:29,983 | INFO    | qa.runner              | [DM-003] START  product_family / product_category are consistent with product_code and product_type_raw (family rules)
+2026-10-22 09:16:30,125 | INFO    | qa.runner              | [DM-003] PASS  (0.14s) All 45,076 records satisfy 3 rule(s)
+2026-10-22 09:16:30,125 | INFO    | qa.runner              | [DM-004] START  Value rules: gross>0, net>=0, 0<=commission<=gross, 0<=commission_pct<=15, txn_count=1, tax/discount>=0
+2026-10-22 09:16:30,137 | INFO    | qa.runner              | [DM-004] PASS  (0.008s) All 45,076 records satisfy 7 rule(s)
+2026-10-22 09:16:30,137 | INFO    | qa.runner              | [DM-005] START  Customer attributes are populated whenever customer_key is populated (no partial enrichment)
+2026-10-22 09:16:30,153 | INFO    | qa.runner              | [DM-005] SKIPPED  (0.019s) BLOCKED: no data-mart row is linked to a customer, so enrichment completeness cannot be evaluated (see DM-007)
+2026-10-22 09:16:30,153 | INFO    | qa.runner              | [DM-006] START  customer_age is plausible and equals full years between date_of_birth and sale_date
+2026-10-22 09:16:30,153 | INFO    | qa.runner              | [DM-006] SKIPPED  (0.002s) BLOCKED: no data-mart row has date_of_birth, so customer_age cannot be evaluated (see DM-007)
+2026-10-22 09:16:30,153 | INFO    | qa.runner              | [DM-007] START  Customer-360 enrichment: sales with a customer_id are linked to the Customer Master (customer_key/attributes populated)
+2026-10-22 09:16:30,275 | INFO    | qa.runner              | [DM-007] FAIL  (0.116s) 43,685 of 43,685 data-mart rows (100.0% of rows that carry a customer_id) have NO customer attributes. Join key dim_Distributor_sales.customer_id (CUST...) neve
+2026-10-22 09:16:30,278 | INFO    | qa.runner              | [DM-008] START  Audit/lineage columns populated and well-formed (fact_etl_run_id, dm_etl_run_id pattern, load timestamp)
+2026-10-22 09:16:30,336 | INFO    | qa.runner              | [DM-008] PASS  (0.061s) All 45,076 records satisfy 3 rule(s)
+2026-10-22 09:16:30,336 | INFO    | qa.runner              | [DM-009] START  dm_sk is a contiguous sequence 1..N ordered by sales_sk
+2026-10-22 09:16:30,345 | INFO    | qa.runner              | [DM-009] PASS  (0.008s) All 45,076 records passed (no violation of: dm_sk not sequential by sales_sk)
+2026-10-22 09:16:30,345 | INFO    | qa.runner              | [DM-010] START  Flags are consistent with their sources: is_ins/is_mf vs product_family, is_kyc_verified vs kyc_status, is_high_value vs gross
+2026-10-22 09:16:30,387 | INFO    | qa.runner              | [DM-010] PASS  (0.042s) All 45,076 records satisfy 4 rule(s)
+2026-10-22 09:16:30,387 | INFO    | qa.runner              | [DM-011] START  sale_date equals sale_date_key; text values fit DDL lengths
+2026-10-22 09:16:31,493 | INFO    | qa.runner              | [DM-011] PASS  (1.106s) sale_date matches sale_date_key; all text values fit DDL lengths
+2026-10-22 09:16:31,493 | INFO    | qa.runner              | [DM-012] START  Every data-mart record can be attributed to a customer (customer_id populated)
+2026-10-22 09:16:31,574 | INFO    | qa.runner              | [DM-012] FAIL  (0.082s) 1,391 of 45,076 records failed: No customer reference in data mart (blank customer_id in source)
+2026-10-22 09:16:35,594 | INFO    | qa.report              | Reports written to C:\qa-lab\distributor-sales-qa\reports
+2026-10-22 09:16:35,672 | INFO    | qa.database            | MySQL connection closed
